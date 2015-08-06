@@ -1,0 +1,48 @@
+{
+  "ProjectName": "The Big App Hybrid",
+  "ProjectGuid": "637dc982-232d-453a-a986-834841a02f12",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.TheBigAppHybrid",
+  "DisplayName": "The Big App Hybrid",
+  "Author": "",
+  "Description": "The Big App Hybrid",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{05529119-2cd3-432a-a065-b3ac15d11a79}",
+  "WP8ProductID": "{0ca4e076-184a-4549-b614-7b4886bee7a4}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.TheBigAppHybrid",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ],
+  "CorePlugins": [
+    "org.apache.cordova.network-information"
+  ]
+}

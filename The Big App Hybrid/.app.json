@@ -3,7 +3,27 @@
   "views": [
     {
       "type": "view",
-      "components": [],
+      "components": [
+        {
+          "type": "authentication",
+          "name": "homeModel",
+          "dataProvider": "bigAppBackend",
+          "emailLabel": "Email",
+          "emailPlaceholder": "Enter email",
+          "passwordLabel": "Password",
+          "passwordPlaceholder": "Enter Password",
+          "signinLabel": "Sign In",
+          "signinRedirect": "profileView",
+          "enableRegistration": true,
+          "gotoRegisterLabel": "Register",
+          "registerEmailLabel": "Email",
+          "registerPasswordLabel": "Password",
+          "registerNameLabel": "Name",
+          "registerLabel": "Register",
+          "registerRedirect": "profileView",
+          "gotoSigninLabel": "Sign In"
+        }
+      ],
       "name": "home",
       "title": "Home",
       "addToNavigation": true,
@@ -11,14 +31,84 @@
     },
     {
       "type": "view",
-      "components": [],
+      "components": [
+        {
+          "type": "list",
+          "name": "profileViewModel",
+          "dataProvider": "bigAppBackend",
+          "collection": "BigName",
+          "iconField": true,
+          "headerField": "Name",
+          "subHeaderField": "JoinDate",
+          "masterDetails": true,
+          "detailHeaderField": "Email",
+          "detailSubHeaderField": "Phone",
+          "detailDescriptionField": "Little",
+          "detailImageField": "Map",
+          "pullToRefresh": false,
+          "endlessScroll": false
+        }
+      ],
       "name": "profileView",
       "title": "Profile",
       "addToNavigation": true,
       "icon": "contacts"
+    },
+    {
+      "type": "view",
+      "components": [],
+      "name": "detailsView",
+      "title": "Activity Details",
+      "addToNavigation": false
+    },
+    {
+      "type": "view",
+      "components": [
+        {
+          "type": "list",
+          "name": "activitylistViewModel",
+          "dataProvider": "bigAppBackend",
+          "collection": "ActivityList",
+          "headerField": "text",
+          "masterDetails": false,
+          "pullToRefresh": false,
+          "endlessScroll": false
+        }
+      ],
+      "name": "activitylistView",
+      "title": "Activity List",
+      "addToNavigation": true,
+      "icon": "bookmarks"
+    },
+    {
+      "type": "view",
+      "components": [
+        {
+          "type": "about",
+          "name": "agendaViewModel",
+          "appName": "List of Agenda",
+          "contactButton": false,
+          "facebookButton": false,
+          "twitterButton": false
+        }
+      ],
+      "name": "agendaView",
+      "title": "Agenda",
+      "addToNavigation": true,
+      "icon": "organize"
     }
   ],
-  "dataProviders": [],
+  "dataProviders": [
+    {
+      "type": "dataProvider",
+      "everliveUrl": "//platform.telerik.com/bs-api/v1/",
+      "name": "bigAppBackend",
+      "title": "The Big App / Big App Backend",
+      "source": "everlive",
+      "everliveKey": "ONJA1QD8Eb4AFkmT",
+      "offlineStorage": true
+    }
+  ],
   "name": "kendoUiMobileApp",
   "navigation": "tabstrip",
   "view": "home",

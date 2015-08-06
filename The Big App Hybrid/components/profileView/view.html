@@ -1,4 +1,12 @@
 <div data-role="view" data-title="Profile" data-layout="main" data-model="app.profileView" data-show="app.profileView.onShow">
     <!-- START_CUSTOM_CODE_profileView -->
     <!-- END_CUSTOM_CODE_profileView -->
+    <ul data-role="listview" data-style="inset" data-template="profileViewModelTemplate" data-bind="{ source: profileViewModel.dataSource, events: {click: profileViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">
+    </ul>
+    <script type="text/x-kendo-template" id="profileViewModelTemplate">
+        <div class="image-with-text">
+            <h3><span class="#: data.icon() #"></span>#: data['Name'] #</h3>
+            <p>#: data['JoinDate'] #</p>
+        </div>
+    </script>
 </div>

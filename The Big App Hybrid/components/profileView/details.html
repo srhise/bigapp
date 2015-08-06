@@ -1,0 +1,14 @@
+<div data-role="view" data-title="Details" data-model="app.profileView.profileViewModel" data-bind="events: { show: detailsShow }">
+    <header data-role="header">
+        <div data-role="navbar" class="header-text">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-bind="text: currentItem.Email" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; text-align: center; display: block; margin-left: 70px; margin-right: 70px;"></span>
+        </div>
+    </header>
+
+    <h3 data-bind="text: currentItem.Phone"></h3>
+    <p data-bind="text: currentItem.Little"></p>
+    <img data-bind="attr: { src: currentItem.MapUrl }" width="100%" height="auto">
+    <!-- START_CUSTOM_CODE_profileViewModel -->
+    <!-- END_CUSTOM_CODE_profileViewModel -->
+</div>

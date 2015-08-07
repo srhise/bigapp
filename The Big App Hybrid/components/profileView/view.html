@@ -1,12 +1,33 @@
 <div data-role="view" data-title="Profile" data-layout="main" data-model="app.profileView" data-show="app.profileView.onShow">
     <!-- START_CUSTOM_CODE_profileView -->
     <!-- END_CUSTOM_CODE_profileView -->
-    <ul data-role="listview" data-style="inset" data-template="profileViewModelTemplate" data-bind="{ source: profileViewModel.dataSource, events: {click: profileViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">
+    <ul data-role="listview" data-style="inset" data-template="profileViewModelTemplate" data-bind="{ source: profileViewModel.dataSource}" data-pull-to-refresh="false" data-endless-scroll="false">
     </ul>
     <script type="text/x-kendo-template" id="profileViewModelTemplate">
         <div class="image-with-text">
+        	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/100px-Circle_-_black_simple.svg.png">
             <h3><span class="#: data.icon() #"></span>#: data['Name'] #</h3>
+            <p>#: data['Phone'] #</p>
+            <p>#: data['Email'] #</p>
             <p>#: data['JoinDate'] #</p>
+        </div>
+        
+        
+        <div class="little-image">
+        <h3>Antonio Ramires</h3>
+        	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/80px-Circle_-_black_simple.svg.png">
+            <div class="little-info">
+       			<h4><span>16 years old</span></h4>
+            	<p>601 capitol ave</p>
+                <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">MAP</a>
+            </div>
+        </div>
+        
+        <div class="next-agenda">
+        	<h3>Next Agenda</h3>
+        	<span>Gymnastics</span>
+            <span>Oct 7, 2015</span>
+            <span>5:00pm</span>
         </div>
     </script>
 </div>

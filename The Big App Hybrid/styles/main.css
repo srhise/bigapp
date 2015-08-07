@@ -108,6 +108,31 @@
 
 /* START_CUSTOM_CODE_kendoUiMobileApp */
 
+.little-image img {
+    margin-top: 90px;
+    display: block;
+    float: left;
+    margin-top: 22px; 
+}
+
+.little-image {
+    margin-top: 90px;
+}
+
+.little-info {  
+    padding: 12px;
+    float: right;
+    margin-right: 40px;
+}
+
+.little-info a {
+    margin-left: 12px;
+}
+
+.signin-view img {
+   margin: 0px auto;
+   display: block;
+}
 
 /* END_CUSTOM_CODE_kendoUiMobileApp */
 

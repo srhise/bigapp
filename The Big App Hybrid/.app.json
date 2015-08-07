@@ -39,12 +39,8 @@
           "collection": "BigName",
           "iconField": true,
           "headerField": "Name",
-          "subHeaderField": "JoinDate",
-          "masterDetails": true,
-          "detailHeaderField": "Email",
-          "detailSubHeaderField": "Phone",
-          "detailDescriptionField": "Little",
-          "detailImageField": "Map",
+          "subHeaderField": "Phone",
+          "masterDetails": false,
           "pullToRefresh": false,
           "endlessScroll": false
         }
@@ -113,5 +109,5 @@
   "navigation": "tabstrip",
   "view": "home",
   "transition": "slide",
-  "skin": "flat"
+  "skin": "native"
 }

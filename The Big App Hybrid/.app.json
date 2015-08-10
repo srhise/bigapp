@@ -8,8 +8,8 @@
           "type": "authentication",
           "name": "homeModel",
           "dataProvider": "bigAppBackend",
-          "emailLabel": "Email",
-          "emailPlaceholder": "Enter email",
+          "emailLabel": "Username",
+          "emailPlaceholder": "Enter Username",
           "passwordLabel": "Password",
           "passwordPlaceholder": "Enter Password",
           "signinLabel": "Sign In",
@@ -66,7 +66,10 @@
           "dataProvider": "bigAppBackend",
           "collection": "ActivityList",
           "headerField": "text",
-          "masterDetails": false,
+          "masterDetails": true,
+          "detailHeaderField": "text",
+          "detailSubHeaderField": "text",
+          "detailDescriptionField": "details",
           "pullToRefresh": false,
           "endlessScroll": false
         }

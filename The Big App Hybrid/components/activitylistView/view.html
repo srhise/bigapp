@@ -1,12 +1,15 @@
 <div data-role="view" data-title="Activity List" data-layout="main" data-model="app.activitylistView" data-show="app.activitylistView.onShow">
     <!-- START_CUSTOM_CODE_activitylistView -->
     <!-- END_CUSTOM_CODE_activitylistView -->
-    <ul data-role="listview" data-style="inset" data-template="activitylistViewModelTemplate" data-bind="{ source: activitylistViewModel.dataSource}" data-pull-to-refresh="false" data-endless-scroll="false">
+    <ul data-role="listview" data-style="inset" data-template="activitylistViewModelTemplate" data-bind="{ source: activitylistViewModel.dataSource, events: {click: activitylistViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">
     </ul>
     <script type="text/x-kendo-template" id="activitylistViewModelTemplate">
         <div class="image-with-text">
-            <h3>#: data['text'] #</h3>
-
+            <a class="activityname"><h3>#: data['text'] #</h3></a>
+			<span class="activity-category">Category</span>
+            <div>
+            	<span>May 20th, 2015</span
+        	</div>
         </div>
     </script>
 </div>

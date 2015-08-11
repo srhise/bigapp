@@ -5,36 +5,8 @@
     </ul>
     <script type="text/x-kendo-template" id="profileViewModelTemplate">
         <div class="image-with-text">
-        	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/100px-Circle_-_black_simple.svg.png">
             <h3><span class="#: data.icon() #"></span>#: data['Name'] #</h3>
             <p>#: data['Phone'] #</p>
-            <p>#: data['Email'] #</p>
-            <p>#: data['JoinDate'] #</p>
-        </div>
-        
-        
-        <div class="little-image">
-        <h3>Antonio Ramires</h3>
-        	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Circle_-_black_simple.svg/80px-Circle_-_black_simple.svg.png">
-            <div class="little-info">
-       			<h4><span>16 years old</span></h4>
-            	<p>601 capitol ave</p>
-                <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">MAP</a>
-            </div>
-        </div>
-        
-        <div class="next-agenda">
-        	<h3>Next Agenda</h3>
-        	<span>Gymnastics</span>
-            <span>Oct 7, 2015</span>
-            <span>5:00pm</span>
-        </div>
-        
-        <div class="notes">
-        	<h3>Notes</h3>
-            <textarea class="shortnote" name="message" rows="10" cols="30">
-			</textarea>
-            <input id="submit" type="submit" value="Save">
         </div>
     </script>
 </div>

@@ -1,10 +1,9 @@
 <div data-role="view" data-title="Activity List" data-layout="main" data-model="app.activitylistView" data-show="app.activitylistView.onShow">
     <!-- START_CUSTOM_CODE_activitylistView -->
-    <div data-role="tabstrip" id="navigation-container">
-        <a href="components/activitylistView/view.html" data-icon="bookmarks">Activity List</a>
-        <a href="components/agendaView/view.html" data-icon="organize">Agenda</a>
-        <a href="components/activitylistView/view.html" data-icon="bookmarks">Activity List</a>
-                <a href="components/agendaView/view.html" data-icon="organize">Agenda</a>
+    <div data-role="tabstrip">
+        <a href="">Events</a>
+        <a href="" >Age</a>
+        <a href="">Date</a>
     </div>
     <!-- END_CUSTOM_CODE_activitylistView -->
     <ul data-role="listview" data-style="inset" data-template="activitylistViewModelTemplate" data-bind="{ source: activitylistViewModel.dataSource, events: {click: activitylistViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">

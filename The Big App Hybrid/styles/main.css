@@ -162,9 +162,10 @@ a.activityname h3 {
 }
 
 span.activity-category {
-    float: right;
+    position: absolute;
     font-size: 0.8em;
     font-weight: bold;
+    right: 16px;
 }
 
 span.rating {
@@ -186,13 +187,13 @@ span.date {
 
 .activity-details span {
     font-weight: bold;
-    margin-right: 30px;
     display: block;
     margin-bottom: 6px;
 }
 
 .activity-info {
     float: right;
+    margin-right: 10px;
 }
 
 .activity-map {
@@ -208,6 +209,25 @@ h3.activitytitle {
     text-align: center;
 }
 
+.headericonn {
+    position: absolute;
+    top: 13px;
+    right: 35px;
+}
+
+.headericon {
+    position: absolute;
+    top: 13px;
+    right: 78px;
+}
+
+.app-logo {
+    display: block;
+    text-align: center;
+    font-size: 4em;
+    margin-bottom: 40px;
+    margin-top: 40px; 
+}
 
 /* END_CUSTOM_CODE_kendoUiMobileApp */
 

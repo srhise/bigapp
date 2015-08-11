@@ -6,7 +6,7 @@
         </div>
     </header>
 
-    <h3 class="activitytitle" data-bind="text: currentItem.text"></h3>
+    <h3 data-bind="text: currentItem.text"></h3>
     <p data-bind="text: currentItem.details"></p>
 
     <!-- START_CUSTOM_CODE_activitylistViewModel -->
@@ -14,45 +14,42 @@
         <img src="https://placeholdit.imgix.net/~text?txtsize=11&txt=100%C3%9780&w=100&h=80">
         <div class="activity-info">
             <span>October 10, 2022</span>
-        	<span>9:20am</span>
-        	<span>9-12yrs</span>
+            <span>9:20am</span>
+            <span>9-12yrs</span>
         </div>
-    </div> <!--     End activity details -->
-   
-	<!--Activity Button Link & Map -->
+    </div>
+    <!--     End activity details -->
+
+    <!--Activity Button Link & Map -->
     <div class="activity-map">
         <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">ADD TO AGENDA</a>
-    	<a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">MAP DIRECTIONS</a>
+        <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">MAP DIRECTIONS</a>
     </div>
     <!--End Activity Button Link & Map -->
-    
+
     <div>
         <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-            make a type specimen book. It has survived not only five centuries, but also the leap into electronic 
-            typesetting, remaining essentially unchange.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+            survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchange.
         </p>
-     </div>
-    
-     <!--More Information about the (activity)Event Date -->
-     <div>
-     	<h3 class="more-infoheader">More Information</h3>
+    </div>
+
+    <!--More Information about the (activity)Event Date -->
+    <div>
+        <h3 class="more-infoheader">More Information</h3>
         <p>
-            This event's purpose is to Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum 
-            has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type 
-            and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into 
-            electronic typesetting, remaining essentially unchange.
+            This event's purpose is to Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+            a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchange.
         </p>
-     </div>
-    
+    </div>
+
     <!--Goals for Thriving Indicators -->
-     <div>
-     	<h3 class="more-infoheader">Goals for Thriving Indicators</h3>
+    <div>
+        <h3 class="more-infoheader">Goals for Thriving Indicators</h3>
         <p>Understand Differences</p>
         <p>Establish Goals</p>
         <p>Growth Mindset</p>
         <p>Positive Relationships</p>
-     </div>
+    </div>
     <!-- END_CUSTOM_CODE_activitylistViewModel -->
 </div>

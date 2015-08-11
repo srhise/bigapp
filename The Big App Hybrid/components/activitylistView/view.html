@@ -1,16 +1,30 @@
 <div data-role="view" data-title="Activity List" data-layout="main" data-model="app.activitylistView" data-show="app.activitylistView.onShow">
     <!-- START_CUSTOM_CODE_activitylistView -->
+    <div data-role="tabstrip" id="navigation-container">
+        <a href="components/activitylistView/view.html" data-icon="bookmarks">Activity List</a>
+        <a href="components/agendaView/view.html" data-icon="organize">Agenda</a>
+        <a href="components/activitylistView/view.html" data-icon="bookmarks">Activity List</a>
+                <a href="components/agendaView/view.html" data-icon="organize">Agenda</a>
+    </div>
     <!-- END_CUSTOM_CODE_activitylistView -->
     <ul data-role="listview" data-style="inset" data-template="activitylistViewModelTemplate" data-bind="{ source: activitylistViewModel.dataSource, events: {click: activitylistViewModel.itemClick}}" data-pull-to-refresh="false" data-endless-scroll="false">
     </ul>
+     
     <script type="text/x-kendo-template" id="activitylistViewModelTemplate">
         <div class="image-with-text">
-            <a class="activityname"><h3>#: data['text'] #</h3></a>
+            <a class="activityname"><i class="fa fa-plus-circle"></i><h3>#: data['text'] #</h3></a>
 			<span class="activity-category">Category</span>
-            <div class="activity-ratings">
+            <div>
             	<span class="date">May 20th, 2015</span>
-                <span class="rating">Rating: </span>
+                <span class="rating">Rating: 
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-half-o"></i>
+        		</span>
         	</div>
  		</div>
+
     </script>
 </div>

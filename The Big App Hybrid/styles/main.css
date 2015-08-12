@@ -119,7 +119,7 @@
 }
 
 .little-image {
-   margin-top: 50px;
+   margin-top: 30px;
 }
 
 .little-info {
@@ -133,11 +133,12 @@
 
 .little-info span {
     display: block;
+    font-size: 0.8em;
 }
 .areas h3 {
     text-align: center;
     text-decoration: underline;
-    font-size: 0.9em;
+    font-size: 0.8em;
 }
 
 .signin-view img {
@@ -156,7 +157,12 @@
 
 .next-agenda span {
     display: block;
-    margin-left: 12px;
+    font-size: 0.8em;
+}
+
+.notes h3 {
+    margin-left: 0em;
+    font-size: 0.8em;
 }
 
 textarea.shortnote {

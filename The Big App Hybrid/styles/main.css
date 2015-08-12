@@ -115,6 +115,7 @@
 
 .little-image h3 {
     font-size: 0.9em;
+    margin-left: 0em;
 }
 
 .little-image {
@@ -145,7 +146,12 @@
 }
 
 .next-agenda {
-    margin-top: 200px;
+  margin-top: 140px;
+}
+
+.next-agenda h3 {
+    font-size: 0.9em;
+    margin-left: 0em;
 }
 
 .next-agenda span {

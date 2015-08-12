@@ -138,6 +138,10 @@
 .areas h3 {
     text-align: center;
     text-decoration: underline;
+    font-size: 0.9em;
+}
+
+.areas p {
     font-size: 0.8em;
 }
 
@@ -165,9 +169,11 @@
     font-size: 0.8em;
 }
 
-textarea.shortnote {
+.notes textarea {
     border: 1px solid #eee;
-    height: 130px;
+    width: 173px;
+    height: 51px;
+    border: 1px solid;
     float: left;
 }
 

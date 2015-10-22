@@ -1,58 +1,30 @@
-<div data-role="view" data-title="Home" data-layout="main-nonav" data-model="app.home" data-show="app.home.onShow">
+<div data-role="view" data-title="Home" data-layout="signin-layout" data-model="app.home" data-show="app.home.init" data-hide="app.home.cleanView">
     <div class="signin-view">
         <div class="app-logo">
-            <i class="fa fa-android"></i>
+           <img src="img/logo.png" class="img-responsive"/>
         </div>
         <form>
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <label>Username
-                        <input type="email" placeholder="Enter Username" data-bind="value: homeModel.email" required autofocus>
-                    </label>
-                </li>
-                <li>
-                    <label>Password
-                        <input type="password" placeholder="Enter Password" data-bind="value: homeModel.password" required>
-                    </label>
-                </li>
-            </ul>
+            <div>
+                <div class="form-group icon-input-container">
+                   <span class="fa fa-envelope"></span>
+                   <input class="form-control" type="email" placeholder="email address" data-bind="value: homeModel.email" required autofocus>
+                </div>
+                <div class="form-group icon-input-container">
+                     <span class="fa fa-lock"></span>
+                    <input class="form-control" type="password" placeholder="password" data-bind="value: homeModel.password" required>
+                </div>    
+            </div>
 
-            <div class="button-group button-group-vertical">
-                <a data-role="button" class="primary" data-bind="events: { click: homeModel.signin }">Sign In</a>
+            <div>
+                <a class="btn btn-primary d-block" data-bind="events: { click: homeModel.signin }">Sign In</a>
 
-                <a data-role="button" data-bind="events: { click: homeModel.toggleView }">Register</a>
+                <a class="d-block forgot-password" data-role="button" data-bind="events: { click: homeModel.toggleView }">Forgot Password?</a>
 
             </div>
-        </form>
+        </form>      
     </div>
-    <div class="signup-view" style="display:none;">
-        <form>
-            <ul data-role="listview" data-style="inset">
-                <li>
-                    <label>Email
-                        <input type="email" data-bind="value: homeModel.email" required>
-                    </label>
-                </li>
-                <li>
-                    <label>Password
-                        <input type="password" data-bind="value: homeModel.password">
-                    </label>
-                </li>
-                <li>
-                    <label>Name
-                        <input type="text" data-bind="value: homeModel.displayName">
-                    </label>
-                </li>
-            </ul>
-            <div class="button-group button-group-vertical">
-                <a class="primary" data-role="button" data-bind="events: { click: homeModel.register }">Register</a>
-                <a data-role="button" data-bind="events: { click: homeModel.toggleView }">Sign In</a>
-            </div>
-        </form>
-    </div>
-    <div class="offline" align="center" style="display:none;">
-        You are currently offline. Before using this app in offline mode you must initialize it while you are online
-    </div>
+   
     <!-- START_CUSTOM_CODE_home -->
     <!-- END_CUSTOM_CODE_home -->
+   
 </div>

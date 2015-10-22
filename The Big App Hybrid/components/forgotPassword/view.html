@@ -1,0 +1,25 @@
+<div data-role="view" data-title="Forgot Password" data-layout="signin-layout" data-model="app.forgotPassword" data-show="app.forgotPassword.onShow" data-hide="app.forgotPassword.cleanView">
+    <div class="signup-view">
+         <div class="app-logo">
+           <img src="img/logo.png" class="img-responsive"/>
+        </div>
+        <form>
+            <div>
+                <div class="form-group icon-input-container">
+                   <span class="fa fa-envelope"></span>
+                   <input class="form-control" type="email" placeholder="email address" data-bind="value: forgotModel.email" required autofocus>
+                </div>  
+            </div>
+
+            <div>
+                <a class="btn btn-primary d-block" data-bind="events: { click: forgotModel.forgetPassword }">Reset Password</a>
+				
+                <a class="d-block forgot-password" data-role="button" data-bind="events: { click: forgotModel.goBack }">Go Back</a>
+
+            </div>
+        </form>      
+    </div>
+    <div class="offline" align="center" style="display:none;">
+        You are currently offline. Before using this app in offline mode you must initialize it while you are online
+    </div>
+</div>

@@ -1,7 +1,21 @@
-'use strict';
-
 app.home = kendo.observable({
-    onShow: function() {}
+    onShow: function() {},
+    cleanView: function() {
+        app.home.homeModel.email = '';
+        app.home.homeModel.password = '';
+    },
+   	init: function() {       
+        
+        var initialScreenSize = window.innerHeight;
+        window.addEventListener("resize", function() {
+	        if(window.innerHeight < initialScreenSize){
+        	    $("[data-role=footer]").hide();
+    	    }
+        	else{
+            	$("[data-role=footer]").show();
+        	}
+        });   
+    }
 });
 
 // START_CUSTOM_CODE_home
@@ -11,32 +25,8 @@ app.home = kendo.observable({
         mode = 'signin',
         registerRedirect = 'profileView',
         signinRedirect = 'profileView',
-        init = function(error) {
-            if (error) {
-                if (error.message) {
-                    alert(error.message);
-                }
-
-                return false;
-            }
-
-            var activeView = mode === 'signin' ? '.signin-view' : '.signup-view';
-
-            if (provider.setup && provider.setup.offlineStorage && !app.isOnline()) {
-                $('.offline').show().siblings().hide();
-            } else {
-                $(activeView).show().siblings().hide();
-            }
-        },
         successHandler = function(data) {
-            var redirect = mode === 'signin' ? signinRedirect : registerRedirect;
-
-            if (data && data.result) {
-                app.user = data.result;
-                app.mobileApp.navigate('components/' + redirect + '/view.html');
-            } else {
-                init();
-            }
+       
         },
         homeModel = kendo.observable({
             displayName: '',
@@ -44,12 +34,18 @@ app.home = kendo.observable({
             password: '',
             validateData: function(data) {
                 if (!data.email) {
-                    alert('Missing email');
+                    swal({
+                        title: "Couldn't Signin",
+                        text: "Please enter a valid email address"
+                    });
                     return false;
                 }
 
                 if (!data.password) {
-                    alert('Missing password');
+                    swal({
+                        title: "Couldn't Signin",
+                        title: "Incorrect password specified"
+                    });                 
                     return false;
                 }
 
@@ -57,14 +53,16 @@ app.home = kendo.observable({
             },
             signin: function() {
                 var model = homeModel,
-                    email = model.email.toLowerCase(),
-                    password = model.password;
+                email = model.email.toLowerCase(),
+                password = model.password;
 
                 if (!model.validateData(model)) {
-                    return false;
+                        return false;
                 }
 
-                provider.Users.login(email, password, successHandler, init);
+                app.mobileApp.navigate('components/activityListView/view.html');
+           		//provider.Users.login(email, password, successHandler, init);
+                           
             },
             register: function() {
                 var model = homeModel,
@@ -83,13 +81,17 @@ app.home = kendo.observable({
                 provider.Users.register(email, password, attrs, successHandler, init);
             },
             toggleView: function() {
-                mode = mode === 'signin' ? 'register' : 'signin';
-                init();
+                app.mobileApp.navigate('components/forgotPassword/view.html');
+            },
+            link: function() {
+                alert('test');
             }
         });
 
     parent.set('homeModel', homeModel);
     parent.set('onShow', function() {
-        provider.Users.currentUser().then(successHandler, init);
+		console.log(this);
+    });
+    parent.set('cleanView', function() {
     });
 })(app.home);

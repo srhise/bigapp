@@ -4,9 +4,11 @@
 <head>
     <title></title>
     <meta charset="utf-8">
-    <link href="bower_components/kendo-ui-appbuilder-core/styles/kendo.mobile.all.min.css" rel="stylesheet">
+	<link href="bower_components/kendo-ui-appbuilder-core/styles/kendo.mobile.common.min.css" rel="stylesheet">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/sweet-alert/sweet-alert.css">
 
     <!-- cordova script (this will be a 404 during development if served with `grunt serve`) -->
     <script src="cordova.js"></script>
@@ -14,6 +16,7 @@
     <script src="bower_components/kendo-ui-appbuilder-core/js/jquery.min.js"></script>
     <script src="bower_components/kendo-ui-appbuilder-core/js/kendo.mobile.min.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
+    <script src="lib/sweet-alert/sweet-alert.js"></script>
     <script src="lib/progress/progress.all.min.js"></script>
     <script src="app.js"></script>
     <script src="dataProviders/bigAppBackend.js"></script>
@@ -24,6 +27,7 @@
     <script src="components/activitylistView/index.js"></script>
     <script src="components/detailsView/index.js"></script>
     <script src="components/profileView/index.js"></script>
+    <script src="components/forgotPassword/index.js"></script>
     <script src="components/home/index.js"></script>
     <div data-role="layout" data-id="main">
         <header data-role="header">
@@ -57,6 +61,14 @@
         <!-- application views will be rendered here -->
 
         <footer data-role="footer">
+        </footer>
+    </div>
+    
+    <div data-role="layout" data-id="signin-layout">
+
+        <!-- application views will be rendered here -->
+		<footer data-role="footer">
+            <img class="img-responsive signin-bg" src="img/signin-bg.png"/>
         </footer>
     </div>
     <!-- START_CUSTOM_CODE_kendoUiMobileApp -->

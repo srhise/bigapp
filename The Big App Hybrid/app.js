@@ -16,6 +16,10 @@
                 statusBarStyle: 'black-translucent'
             });
         });
+        
+        window.onerror = function(msg) {
+            alert(msg);
+        };
     };
 
     if (window.cordova) {

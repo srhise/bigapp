@@ -12,13 +12,20 @@
 
     <!-- cordova script (this will be a 404 during development if served with `grunt serve`) -->
     <script src="cordova.js"></script>
-
+    <script src="lib/defiant/defiant.min.js"></script>
+    <script src="lib/vue/vue.min.js"></script>
     <script src="bower_components/kendo-ui-appbuilder-core/js/jquery.min.js"></script>
     <script src="bower_components/kendo-ui-appbuilder-core/js/kendo.mobile.min.js"></script>
+    <script src="lib/kendo/kendo.binders.class.js"></script>
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
     <script src="lib/sweet-alert/sweet-alert.js"></script>
     <script src="lib/progress/progress.all.min.js"></script>
     <script src="app.js"></script>
+    <script src="scripts/utilities.js"></script>
+    <script src="scripts/state.js"></script>
+    <script src="scripts/middleware.js"></script>
+    <script src="scripts/activityList.js"></script>
+    <script src="scripts/filterActivities.js"></script>
     <script src="dataProviders/bigAppBackend.js"></script>
 </head>
 
@@ -63,6 +70,85 @@
         <footer data-role="footer">
         </footer>
     </div>
+    
+    <div data-role="layout" data-id="activities-header">
+        <header data-role="header">
+            <div data-role="navbar">
+                <div class="row header-nav">
+                    <div class="col-xs-3">
+                        <a class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col-xs-5">
+                        <span data-role="view-title"></span>
+                    </div>
+                    <div class="col-xs-4">
+                        <a class="navbtn"><i class="fa fa-heart-o"></i></a>
+                        <a href="#views/filterActivities.html" class="navbtn"><i class="fa fa-filter"></i></a>
+                    </div>
+               	</div>
+        	</div>
+            <div class="tabs container-fluid">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a href="#">
+                            <i class="fa fa-calendar"></i>&nbsp;&nbsp; Upcoming Events
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a class="active" href="#">
+                            <i class="fa fa-smile-o"></i>&nbsp;&nbsp; Suggested Activities
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- application views will be rendered here -->
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a >My Planner</a>
+                <a href="#views/activityList.html">Activity Finder</a>
+                <a >My Profile</a>
+            </div>
+        </footer>
+    </div>
+    
+    <div data-role="layout" data-id="filters-layout">
+        <header data-role="header">
+            <div data-role="navbar">
+                <div class="row header-nav">
+                    <div class="col-xs-3">
+                        <a href="#views/activityList.html" class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col-xs-6 text-center">
+                        <span data-role="view-title"></span>
+                    </div>
+                    <div class="col-xs-3 text-right">
+                        <a class="navbtn"><i class="fa fa-heart-o"></i></a>
+                    </div>
+               	</div>
+        	</div>
+            <div class="tabs container-fluid">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <a class="active" data-id="one">
+                            Basic
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a data-id="two">
+                            Thriving Indicators
+                        </a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a data-id="three">
+                            Category
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    
     
     <div data-role="layout" data-id="signin-layout">
 

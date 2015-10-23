@@ -60,7 +60,7 @@ app.home = kendo.observable({
                         return false;
                 }
 
-                app.mobileApp.navigate('components/activityListView/view.html');
+                app.mobileApp.navigate('views/activityList.html');
            		//provider.Users.login(email, password, successHandler, init);
                            
             },

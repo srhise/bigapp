@@ -1,0 +1,93 @@
+<div class="view-container" 
+     data-role="view" 
+     id="activityDetails" 
+     data-title="Activity Details" 
+     data-layout="page-layout" 
+     data-model="app.activityDetails.viewModel" 
+     data-init="app.activityDetails.init" 
+     data-show="app.activityDetails.show" 
+     data-before-show="app.activityDetails.onBeforeShow"
+     data-after-show="app.activityDetails.afterShow"
+     data-hide="app.activityDetails.hide" 
+     data-use-native-scrolling="true"
+     >
+	<!-- Start View -->
+    <div class="feat-img" data-template="feat-img" data-bind="source: activity">
+        
+    </div>
+    <script type="text/x-kendo-template" id="feat-img">
+    	<img class="img-responsive" src="#:mediaURL#"/>
+    </script>
+    <ul id="activityDetail" data-role="listview" class="listView" data-bind="source: activity" data-template="activity-template">
+    </ul>
+    <script type="text/x-kendo-template" id="activity-template">
+    	
+        <div class="indicator">
+        	#: indicator #
+        </div>
+        <div class="meta">
+            <span class="cost">Free</span>
+            <span class="title text-center">#: name #</span>
+            <a class="btn btn-primary btn-favorite"><i class="fa fa-heart-o"></i>&nbsp;Add to Favorites</a>
+            <span class="description">#: description #</span>
+            
+            <span><strong>Age Group:</strong> #:ageGroup#</span>
+            <span><strong>Cost:</strong> #:costType#</span>
+            <span><strong>Thriving Indicator:</strong> #:indicator#</span>
+            <span><strong>Category:</strong> #:category#</span>
+			# if (logoURL) { #
+            <span><strong>Sponsored by:</strong> <img src="#:logoURL#" width="50" /></span>
+        	# } #
+        	<hr/>
+            # if (address1) { #
+            <span><strong>Address:</strong><br/>
+            <span>#:address1#</span>
+            # } #            
+            # if (address2) { # 
+            <span>#:address2#</span>
+            # } #
+             # if (city) { # 
+            <span>#:city #, #: state# #: zip #</span>
+            # } #
+            
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center=#:lat#,#:lng#&key=AIzaSyCcV_2Jvoul2LAv4dmSBkoBi0aOkkLm_-k&size=380x200&zoom=13" width="100%"/>
+            <a href="" target="_blank" class="btn btn-primary btn-map"><i class="fa fa-map"></i> &nbsp;Get Directions</a>
+        </div>
+       
+        
+    </script>
+    
+    <div class="accordion"  data-bind="source: activity" data-template="accordion-template">
+        
+    </div>
+ 
+    <script type="text/x-kendo-template" id="accordion-template">
+    	<div class="bs-example">
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="\\#accordion" href="\\#collapseOne">Perks</a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body" data-bind="html:perks">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="\\#accordion" href="\\#collapseTwo">Additional Information</a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body" data-bind="html:additionalInfo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    <!-- End View -->
+</div>

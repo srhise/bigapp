@@ -18,16 +18,16 @@
         <div class="filter-group" data-bind="source: viewModel.ages" data-template="ages-template">
         </div>
         <script type="text/x-kendo-template" id="ages-template">
-        	<span data-bind="click: addFilter, attr:{class:class}" data-id="ages-#: id #" data-string="#: name #" data-group="ages" class="filter"> #: name #</span>
+        	<span data-bind="click: addFilter, attr:{class:class}" data-id="ages-#: id #" data-string="#: name #" data-group="#: group#" class="filter"> #: name # School</span>
         </script>
         <span class="filter-name">
         	Cost
         </span>
-        <div class="filter-group">
-            <span data-bind="click: addFilter" data-id="Free" data-group="cost" class="filter">Free</span>
-            <span data-bind="click: addFilter" data-id="Paid" data-group="cost" class="filter">Paid</span>
-            <span data-bind="click: addFilter" data-id="Perks" data-group="cost" class="filter">Perks Available</span>
+        <div class="filter-group" data-bind="source: viewModel.cost" data-template="cost-template">
         </div>
+        <script type="text/x-kendo-template" id="cost-template">
+        	<span data-bind="click: addFilter, attr:{class:class}" data-id="ages-#: id #" data-string="#: name #" data-group="#:group#" class="filter"> #: name # </span>
+        </script>
     </div>
     
     <div class="filterBlock tab two">
@@ -38,7 +38,7 @@
         <div class="filter-group" data-bind="source: viewModel.indicators" data-template="indicators-template">
         </div>
         <script type="text/x-kendo-template" id="indicators-template">
-        	<span data-bind="click: addFilter, attr:{class:class}" data-id="indicators-#: id #" data-string="#: name #" data-group="indicators" class="filter"> #: name #</span>
+        	<span data-bind="click: addFilter, attr:{class:class}" data-id="indicators-#: id #" data-string="#: name #" data-group="#:group#" class="filter"> #: name # </span>
         </script>
     </div>
     
@@ -49,13 +49,13 @@
         <div class="filter-group" data-bind="source: viewModel.categories" data-template="categories-template">
         </div>
         <script type="text/x-kendo-template" id="categories-template">
-        	<span data-bind="click: addFilter" data-id="categories-#: id #" data-string="#: name #" data-group="categories" class="filter"><i></i> #: description #</span>
+        	<span data-bind="click: addFilter, attr:{class:class}" data-id="categories-#: id #" data-string="#: name #" data-group="#:group#" class="filter"> #: description #</span>
         </script>
         
     </div>
     <div class="filter-buttons">
-       	<a class="btn btn-cancel clear-filters">Clear Filters</a>
-        <a class="btn btn-primary apply-filters">Apply Filters</a>
+       	<a data-bind="click:viewModel.clearFilters" class="btn btn-cancel clear-filters">Clear Filters</a>
+        <a href="#views/activityList.html" class="btn btn-primary apply-filters">Apply Filters</a>
     </div>
     <!-- End View -->
 </div>

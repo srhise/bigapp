@@ -12,23 +12,71 @@ app.filterActivities = (function () {
             ages: [
                 {
                     id: 1,
-                    name: 'Elementary School',
+                    group: 'ages',
+                    name: 'Elementary',
                     active: false,
                   	class: ''
                 },
                 {
                     id: 2,
-                    name: 'Middle School',
+                    group: 'ages',
+                    name: 'Middle',
                     active: false,
                     class: ''
                 },
                 {
                     id: 3,
-                    name: 'High School',
+                    group: 'ages',
+                    name: 'High',
                     active: false,
                     class: ''
                 }                
-            ]
+            ],
+            cost: [
+                {
+                    id: 1,
+                    group: 'cost',
+                    name: 'Free',
+                    active: false,
+                  	class: ''
+                },
+                {
+                    id: 2,
+                    group: 'cost',
+                    name: 'Paid',
+                    active: false,
+                    class: ''
+                },
+                {
+                    id: 3,
+                    group: 'cost',
+                    name: 'Perks Available',
+                    active: false,
+                    class: ''
+                }                
+            ],
+            clearFilters: function() {
+                $.each(viewModel.ages, function(index, value) {
+                	value.set("active", false);
+                    value.set("class", "");
+            	});
+            	
+            	$.each(viewModel.cost, function(index, value) {
+                	value.set("active", false);
+                    value.set("class", "");
+            	});
+        
+        		$.each(viewModel.indicators, function(index, value) {
+                	value.set("active", false);
+                    value.set("class", "");
+            	});
+        
+        		$.each(viewModel.categories, function(index, value) {
+                	value.set("active", false);
+                    value.set("class", "");
+            	});
+                app.events.publish('filterChange', {ages: viewModel.ages, cost: viewModel.cost, indicators: viewModel.indicators, categories: viewModel.categories});
+            }
         });
         var init = function () {
             
@@ -37,6 +85,7 @@ app.filterActivities = (function () {
             
             var categorySubscription = app.events.subscribe('newCategories', function(categories) {
                 $.each(categories, function( index, value ) {
+                    value.group = 'categories';
                 	value.active = false;
                     value.class = '';
                 });
@@ -45,6 +94,7 @@ app.filterActivities = (function () {
             
             var indicatorsSubscription = app.events.subscribe('newIndicators', function(indicators) {
                 $.each(indicators, function( index, value ) {
+                    value.group = 'indicators'
                 	value.active = false;
                     value.class = '';
                 });
@@ -67,15 +117,11 @@ app.filterActivities = (function () {
            
         }
         var addFilter = function(e) {
-            var id = $(e.target).closest('span').data().id;
-            var name = $(e.target).closest('span').data().string;
-            var group = $(e.target).closest('span').data().group;
-            handleFilter(id, name, group );
-        }
-        var handleFilter = function(id, name, group) {
+            var id = e.data.id;
+            var name = e.data.string;
+            var group = e.data.group;
+            
             if (group == 'ages') {
-                $('[data-id=ages-'+id+'] i').toggleClass('fa fa-check');
-                id = id.split('-')[1];
                 $.each(viewModel.ages, function( index, value ) {
                   if(value.id == id) {
                       value.set("active", !value.active);
@@ -89,8 +135,6 @@ app.filterActivities = (function () {
             }
             
             if (group == 'indicators') {
-                $('[data-id=indicators-'+id+'] i').toggleClass('fa fa-check');
-                id = id.split('-')[1];
                 $.each(viewModel.indicators, function( index, value ) {
                   if(value.id == id) {
                       value.set("active", !value.active);
@@ -103,16 +147,43 @@ app.filterActivities = (function () {
                 });
             }
             
+            if (group == 'cost') {
+                $.each(viewModel.cost, function( index, value ) {
+                  if(value.id == id) {
+                      value.set("active", !value.active);
+                      if (value.active) {
+                          value.set("class", 'fa fa-check');
+                      } else {
+                          value.set("class", '');
+                      }
+                  }
+                });
+            }
+            
+            if (group == 'categories') {
+                $.each(viewModel.categories, function( index, value ) {
+                  if(value.id == id) {
+                      value.set("active", !value.active);
+                      if (value.active) {
+                          value.set("class", 'fa fa-check');
+                      } else {
+                          value.set("class", '');
+                      }
+                  }
+                });
+            }
+            
+            app.events.publish('filterChange', {ages: viewModel.ages, cost: viewModel.cost, indicators: viewModel.indicators, categories: viewModel.categories});
             
         }
+        
         return {
             viewModel: viewModel,
             init: init,
             show: show,
             hide: hide,
             onBeforeShow: onBeforeShow,
-            addFilter: addFilter,
-            handleFilter: handleFilter
+            addFilter: addFilter
         };
     }());
     return module;

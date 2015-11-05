@@ -59,6 +59,10 @@
                 type: "error"
             });
         });
+        
+        // Initialize state module
+        app.state.init();
+        app.activityDetails.init();
     };
 
     if (window.cordova) {

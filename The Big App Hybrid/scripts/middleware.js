@@ -21,12 +21,25 @@ app.middleWare = (function () {
          });
         }
         
+        var getEvents =  function() {
+          $.ajax({
+            url: API_HOST + '/events',
+            type: 'GET',
+            success: function(response) {
+               app.state.handleEvents(response);
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+               app.state.handleAPIError();
+            }
+         });
+        }
+        
         var getActivity = function(id) {
           $.ajax({
             url: API_HOST + '/activities/'+id,
             type: 'GET',
             success: function(response) {
-            	app.state.model.set("currentActivity", response);
+            	app.state.handleActivity(response);
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -52,7 +65,7 @@ app.middleWare = (function () {
             url: API_HOST + '/indicator/'+id,
             type: 'GET',
             success: function(response) {
-            	app.state.model.set("currentIndicator", response);
+            	app.state.handleIndicatorRequest(response);
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -73,8 +86,10 @@ app.middleWare = (function () {
          });
         }
         
+
         return {
             getActivities: getActivities,
+            getEvents: getEvents,
             getActivity: getActivity,
             getIndicators: getIndicators,
             getIndicator: getIndicator,

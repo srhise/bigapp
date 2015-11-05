@@ -3,29 +3,128 @@
      id="activityList" 
      data-title="Activities" 
      data-layout="activities-header" 
-     data-model="app.activityList" 
+     data-model="app.activityList.viewModel" 
      data-init="app.activityList.init" 
      data-show="app.activityList.show" 
-     data-before-show="app.activityList.onBeforeShow" 
+     data-before-show="app.activityList.onBeforeShow"
+     data-after-show="app.activityList.afterShow"
      data-hide="app.activityList.hide" 
-     data-use-native-scrolling="true">
+     data-use-native-scrolling="true"
+     >
 	<!-- Start View -->
-    <ul data-role="listview" class="listView" data-bind="source: viewModel.activities" data-template="foo-template">
+    <!-- Start View -->
+    <div class="stats activitiesListView" data-template="stats-activity" data-bind="source: state">
+    </div>
+     <script type="text/x-kendo-template" id="stats-activity">
+         <div class="container-fluid m-t-10">
+         	<div class="row">
+            	<div class="col-xs-8 p-0">
+                    <h4>
+                        <span data-bind="text:totalActivities"></span> Activities
+                    </h4>
+                </div>
+                <div class="col-xs-4 p-0">
+                	<a class="btn btn-filter" style="display:block;float:right;" href="\\#views/filterActivities.html">Show Filters</a>
+                </div>
+            </div>
+         </div>
+    </script>
+   
+    <div class="empty activitiesListView" data-template="empty-activity" data-bind="source: state">
+        
+    </div>
+    <script type="text/x-kendo-template" id="empty-activity">
+        <div class="alert alert-info" data-bind="attr:{class:activityEmptyClass}">
+        	<h3>No Activities Found!</h3>
+        	<p>No activities were found using the chosen criteria. Please check upcoming events or change your search criteria <a href="\\#views/filterActivities.html">here</a>.</p>
+        </div>
+    </script>
+    <ul data-role="listview" class="listView activitiesListView" data-bind="source: activities" data-template="foo-template">
     </ul>
     <script type="text/x-kendo-template" id="foo-template">
-        <div class="indicator">
+        <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
         	#: indicator #
         </div>
         <div class="meta">
             <span class="cost">Free</span>
-            <span class="title">#: name #</span>
+            <span class="title"  data-bind="click:loadActivity">#: name #</span>
             <span class="description">#: description #</span>
-            <span class="rating"></span>
+            <div class="rating">
+        	# for (i = 0; i < rating; i++) { #
+            	<i class="fa fa-star"></i>
+            # } #
+        	</div>
         </div>
         <div class="container-fluid action-bar">
             <div class="row">
                 <div class="col-xs-3">
-                    <a class="details">
+                    <a class="details" data-bind="click:loadActivity">
+                        <i class="fa fa-ellipsis-h"></i>Details
+                    </a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="inquire">
+                        <i class="fa fa-comment-o"></i>Inquire
+                    </a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="favorite">
+                        <i class="fa fa-heart-o"></i>Favorite
+                    </a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="complete">
+                        <i class="fa fa-check"></i>Complete
+                    </a>
+                </div>
+            </div>
+       </div>
+    </script>
+    <div class="stats eventsListView passiveHide" data-template="stats-events" data-bind="source: state">
+    </div>
+     <script type="text/x-kendo-template" id="stats-events">
+         <div class="container-fluid m-t-10">
+         	<div class="row">
+            	<div class="col-xs-8 p-0">
+                    <h4>
+                        <span data-bind="text:totalEvents"></span> Events
+                    </h4>
+                </div>
+                <div class="col-xs-4 p-0">
+                	<a class="btn btn-filter" style="display:block;float:right;" href="\\#views/filterActivities.html">Show Filters</a>
+                </div>
+            </div>
+         </div>
+    </script>
+    <div class="empty eventsListView passiveHide" data-template="empty-event" data-bind="source: state">
+        
+    </div>
+    <script type="text/x-kendo-template" id="empty-event">
+        <div class="alert alert-info" data-bind="attr:{class:eventEmptyClass}">
+        	<h3>No Events Found!</h3>
+            <p>No events were found using the chosen criteria. Please check upcoming events or change your search criteria <a href="\\#views/filterActivities.html">here</a>.</p>
+        </div>
+    </script>
+    <ul data-role="listview" class="listView eventsListView passiveHide" data-bind="source: events" data-template="events-template">
+    </ul>
+    <script type="text/x-kendo-template" id="events-template">
+        <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
+        	#: indicator #
+        </div>
+        <div class="meta">
+            <span class="cost">#= kendo.toString(new Date(date), 'MM/dd/yyyy') #</span>
+            <span class="title" data-bind="click:loadActivity">#: name #</span>
+            <span class="description">#: description #</span>
+            <div class="rating">
+        	# for (i = 0; i < rating; i++) { #
+            	<i class="fa fa-star"></i>
+            # } #
+        	</div>
+        </div>
+        <div class="container-fluid action-bar">
+            <div class="row">
+                <div class="col-xs-3">
+                    <a class="details" data-bind="click:loadActivity">
                         <i class="fa fa-ellipsis-h"></i>Details
                     </a>
                 </div>

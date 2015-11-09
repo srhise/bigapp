@@ -381,9 +381,16 @@ d-block {
     height:auto;
 }
 
-a.btn-filter {
+a.btn-clear {
     color:#8f23b3;
     border:2px solid #8f23b3;
+    border-radius:3px;
+    margin-right:10px;
+}
+
+a.btn-white, a.btn-white:focus, a.btn-white:hover {
+    color:#fff;
+    border:2px solid #fff;
     border-radius:3px;
     margin-right:10px;
 }
@@ -667,9 +674,24 @@ h3.activitytitle {
     padding:15px 0px;
 }
 
+[data-title="Home"] .km-footer {
+    background: url('../img/signin-bg.png') no-repeat bottom left;
+    /* height: 100%; */
+    /* width: 100%; */
+    width: 100%;
+    height: 220px;
+    background-size: 100% 114%;
+    background-position: 0px -2px;
+}
+
+[data-title="Home"] .km-content {
+    background-color:none;
+    background:none;
+} 
+
 img.signin-bg {
     position:fixed;
-    bottom:0px;
+    bottom:-40px;
     left:0px;
     width:100%;
     z-index:-1;
@@ -689,7 +711,7 @@ img.signin-bg {
 }
 
 .km-footer {
-    z-index:-1;
+    z-index:10;
 }
 /* END_CUSTOM_CODE_kendoUiMobileApp */
 
@@ -792,6 +814,7 @@ img.signin-bg {
 .header-nav {
     text-align:right;
     padding-right:15px;
+    position:relative;
 }
 
 .header-nav .col-xs-3 {
@@ -818,8 +841,26 @@ img.signin-bg {
     text-decoration:none;
 }
 
+.header-nav .title-container {
+    text-align:center;
+}
 
+.header-nav .icons-left {
+    position:absolute;
+    left:15px;
+    top:0px;
+}
 
+.header-nav .icons-right {
+    position:absolute;
+    right:15px;
+    top:0px;
+}
+
+.header-nav .km-button {
+    padding:0px !important;
+    margin:0px !important;
+}
 /* Activity List */
 
 .listView {
@@ -1157,4 +1198,158 @@ h4 {
     margin-bottom: 5px;
     font-weight: bold;
     color: #242b50;
+}
+
+/* Profile */
+.profile-header {
+    width: 100%;
+    padding-top: 10px;
+    color: #fff;
+    background-color: #8f23b3;
+    margin-bottom: 0px;
+    padding-bottom:10px;
+}
+
+.profile-header span {
+    display:block;
+    font-size:15px;
+}
+
+.profile-header span.name {
+    font-size:20px;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    -webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-radius: 120px;
+    background-color: rgba(0, 0, 0, 0)!important;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    overflow:hidden;
+}
+
+.circle .photo-icon {
+    color: #fff;
+    font-size: 22px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.circle > a > div {
+    webkit-border-radius: 120px;
+    -moz-border-radius: 120px;
+    border-radius: 120px;
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+    text-align: center;
+    line-height: 120px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+
+}
+
+.circle img {
+    margin-top:-25px;
+}
+
+.profile-card {
+    font-family:"Verdana", sans-serif;
+    display: block;
+    margin: 5px 5px 15px 5px;
+    padding: 10px 0px 0px 0px;
+    list-style-type: none;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    position: relative;
+    overflow: visible;
+    background-color: #fff;
+}
+
+.profile-card .row {
+    margin-left:0px;
+    margin-right:0px;
+}
+
+.profile-card [class^="col-xs"] {
+	padding-left: 5px;
+    padding-right: 5px;
+}
+
+.profile-card span.title {
+    display:block;
+    font-size:14px;
+    padding-bottom:8px;
+    margin-bottom:10px;
+    font-weight:normal;
+    color:#b4b6cc;
+    border-bottom:1px solid #cecece;
+    margin:5px;
+}
+
+.profile-card .card-content span {
+    margin:5px;
+    font-size:16px;
+}
+
+.profile-card .card-content.emergency-contact span {
+    margin:2px;
+    font-size:12px;
+}
+
+.profile-card .card-content.emergency-contact > div > span {
+    display:block;
+}
+
+.profile-card .little-name {
+	font-size:22px;
+    font-weight:bold;
+    padding-top: 8px;
+    display: block;
+}
+
+.profile-card .little-item {
+    display: block;
+    position: relative;
+    padding-left:20px;
+}
+
+.profile-card .little-item i {
+    display: block;
+    position:absolute;
+    left:-6px;
+    font-size:22px;
+    top:10px;
+}
+
+.profile-card .card-content span.dob {
+    font-size:15px;
+    margin:0px;
+}
+
+.profile-card .card-content.emergency-contact span.name {
+    font-size:14px;
+    font-weight:bold;
+}
+.inline {
+    display:inline !important;
+}
+
+.form {
+    margin:10px 0px;
+}
+
+.form input {
+    margin-bottom:10px;
 }

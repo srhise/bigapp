@@ -7,13 +7,20 @@ app.state = (function () {
     var module = (function () {
         var model = kendo.observable({
             activities: null,
-            currentActivity: null
+            currentActivity: null,
+            user: null
         });
         
         var init = function () {
+            var user;
+            user = JSON.parse(localStorage.getItem("user"));
+            model.set("user", user);
+            
             var filterSubscription = app.events.subscribe('filterChange', function(filters) {
                 handleFilters(filters);
             });
+            
+            
         }
         
         var handleAPIError = function(error) {
@@ -64,6 +71,22 @@ app.state = (function () {
             app.events.publish('newFilters', filters);
         }
         
+        var handleLogin = function(user) {
+            localStorage.setItem("user", JSON.stringify(user));
+            app.state.model.set("user", user);
+            app.mobileApp.navigate('views/activityList.html');
+        }
+        
+        var handleLogout = function() {
+            localStorage.removeItem("user");
+            app.state.model.set("user", null);
+            app.mobileApp.navigate('components/home/view.html');
+        }
+        
+         var handleInvalidLogin = function() {
+             app.events.publish('loginerror', ['Invalid Login or Password Specified']);
+        }
+        
         return {
             model: model,
             init: init,
@@ -74,7 +97,10 @@ app.state = (function () {
             handleCategories: handleCategories,
             handleIndicators: handleIndicators,
             handleIndicatorRequest: handleIndicatorRequest,
-            handleFilters: handleFilters
+            handleFilters: handleFilters,
+            handleLogin: handleLogin,
+            handleLogout: handleLogout,
+            handleInvalidLogin: handleInvalidLogin
         };
     }());
     return module;

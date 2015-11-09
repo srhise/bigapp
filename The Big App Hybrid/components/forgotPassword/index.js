@@ -48,10 +48,12 @@ app.forgotPassword = kendo.observable({
                         return false;
                 }
 
-                swal({
+                app.middleWare.resetPassword(email, function() {
+                    swal({
                         title: "Password Reset Success",
-                    	type: "success",
+                        type: "success",
                         text: "Please check your email to obtain your password."
+                    });    
                 });
             },
             goBack: function() {

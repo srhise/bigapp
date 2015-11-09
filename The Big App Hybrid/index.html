@@ -27,14 +27,12 @@
     <script src="scripts/activityList.js"></script>
     <script src="scripts/activityDetails.js"></script>
     <script src="scripts/filterActivities.js"></script>
+    <script src="scripts/profile.js"></script>
+    <script src="scripts/updateInfo.js"></script>
     <script src="dataProviders/bigAppBackend.js"></script>
 </head>
 
 <body id="kendoUiMobileApp">
-    <script src="components/agendaView/index.js"></script>
-    <script src="components/activitylistView/index.js"></script>
-    <script src="components/detailsView/index.js"></script>
-    <script src="components/profileView/index.js"></script>
     <script src="components/forgotPassword/index.js"></script>
     <script src="components/home/index.js"></script>
     <div data-role="layout" data-id="main">
@@ -108,7 +106,7 @@
             <div data-role="tabstrip">
                 <a><img width="30" src="img/agenda-icon.png"/>My Planner</a>
                 <a href="#views/activityList.html"><img  width="30" src="img/running-icon.png"/> Activity Finder</a>
-                <a><img  width="30" src="img/profile-icon.png"/> My Profile</a>
+                <a href="#views/profile.html"><img  width="30" src="img/profile-icon.png"/> My Profile</a>
             </div>
         </footer>
     </div>
@@ -134,7 +132,33 @@
             <div data-role="tabstrip">
                 <a><img width="30" src="img/agenda-icon.png"/>My Planner</a>
                 <a href="#views/activityList.html"><img width="30" src="img/running-icon.png"/> Activity Finder</a>
-                <a><img  width="30" src="img/profile-icon.png"/> My Profile</a>
+                <a href="#views/profile.html"><img  width="30" src="img/profile-icon.png"/> My Profile</a>
+            </div>
+        </footer>
+    </div>
+    
+    <div data-role="layout" data-id="profile-layout">
+        <header data-role="header">
+            <div data-role="navbar">
+                <div class="row header-nav">
+                    <div class="icons-left">
+                        <a data-role="backbutton" class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <div class="title-container">
+                        <span data-role="view-title"></span>
+                    </div>
+                    <div class="icons-right">
+                        <a class="navbtn" style="float:right;"><i class="fa fa-line-chart"></i></a>
+                    </div>
+               	</div>
+        	</div>
+        </header>
+        <!-- application views will be rendered here -->
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a><img width="30" src="img/agenda-icon.png"/>My Planner</a>
+                <a href="#views/activityList.html"><img width="30" src="img/running-icon.png"/> Activity Finder</a>
+                <a href="#views/profile.html"><img  width="30" src="img/profile-icon.png"/> My Profile</a>
             </div>
         </footer>
     </div>
@@ -177,11 +201,13 @@
     </div>
     
     
-    <div data-role="layout" data-id="signin-layout">
+    <div data-role="layout" data-id="signin-layout" class="signin">
 
         <!-- application views will be rendered here -->
+        <div class="over">
+            
+        </div>
 		<footer data-role="footer">
-            <img class="img-responsive signin-bg" src="img/signin-bg.png"/>
         </footer>
     </div>
     <!-- START_CUSTOM_CODE_kendoUiMobileApp -->

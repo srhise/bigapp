@@ -53,7 +53,7 @@ app.activityList = (function () {
             var activitySubscription = app.events.subscribe('newActivities', function(activities) {
                 viewModel.set("snapshot", Defiant.getSnapshot(activities));
                 viewModel.set("activities", activities);
-                
+                app.utilities.handleTooltips();
             });
             
             var eventSubscription = app.events.subscribe('newEvents', function(events) {
@@ -69,7 +69,7 @@ app.activityList = (function () {
             var indicatorSubscription = app.events.subscribe('indicatorDetails', function(indicator) {
                 swal(indicator.description);
             });
-            
+            app.mobileApp.pane.loader.show(); //hide loading animation
             app.middleWare.getActivities();
             app.middleWare.getEvents();
             
@@ -87,11 +87,9 @@ app.activityList = (function () {
             }).data('kendoReplyRating');
         }
         var afterShow = function () {
-            
             if (viewModel.hasFilters) {
             	filterActivities();    
             }
-            app.utilities.handleTooltips();
         } 
         var hide = function () {
 

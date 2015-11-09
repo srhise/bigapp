@@ -1,0 +1,95 @@
+<div class="view-container" 
+     data-role="view" 
+     id="profile" 
+     data-title="My Profile" 
+     data-layout="profile-layout" 
+     data-model="app.profile.viewModel" 
+     data-init="app.profile.init" 
+     data-show="app.profile.show" 
+     data-before-show="app.profile.onBeforeShow"
+     data-after-show="app.profile.afterShow"
+     data-hide="app.profile.hide" 
+     data-use-native-scrolling="true"
+     >
+	<!-- Start View -->
+    <div class="profile-header container-fluid">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="circle">
+                    <i class="fa fa-camera photo-icon"></i>
+					<a data-bind="click:addImage">
+                        <img width="120" data-bind="attr: { src: photo }" />
+					</a>
+				</div>
+            </div>
+            <div class="col-xs-7 col-xs-offset-1">
+                
+                <span class="name" data-bind="text:profile.fullName"></span>
+                <span class="since">Match Date: <span class="inline" data-bind="text:profile.matchDate"></span></span>
+                <a href="#views/updateInfo.html" class="btn btn-white m-t-5"><i class="fa fa-edit"></i> Update Info</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="profile-card container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="title">My Little</span>
+            </div>
+        </div>
+        <div class="row card-content">
+            <div class="col-xs-4">
+                <span class="little-name" data-bind="text:profile.childFirstName"></span>
+            </div>
+            <div class="col-xs-3">
+                <span class="little-age little-item"><i class="fa fa-smile-o"></i><strong>Age</strong> <span class="inline" data-bind="text:profile.childAge"></span></span>
+            </div>
+            <div class="col-xs-5">
+                 <span class="little-birthday little-item"><i class="fa fa-birthday-cake"></i><strong>Birthdate</strong><br/><span class="inline dob" data-bind="text:profile.childDOB"></span></span>
+            </div>
+        </div>        
+    </div>
+    
+    <div class="profile-card container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="title">Match Support Specialist</span>
+            </div>
+        </div>
+        <div class="row card-content emergency-contact">
+            <div class="col-xs-12">
+                <span class="name" data-bind="text:profile.matchSupportName"></span>
+                <span class="phone"><strong>Business Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportBusinessPhone"></a></span>
+                <span class="phone"><strong>Cell Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportCellPhone"></a></span>
+                <span class="phone"><strong>Email</strong> <a class="inline" data-bind="text:profile.matchSupportEmail"></a></span>
+            </div>
+        </div>        
+    </div>
+    
+    <div class="profile-card container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <span class="title">Emergency Contact</span>
+            </div>
+        </div>
+        <div class="row card-content emergency-contact">
+            <div class="col-xs-12">
+                <span class="name" data-bind="text:profile.matchSupportName">Sue Fisher</span>
+                <span class="phone"><strong>Cell Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportCellPhone, attr:{href: profile.matchSupportCellPhone}"></a></span>
+                <span class="phone"><strong>Email</strong> <a class="inline" data-bind="text:profile.matchSupportEmail"></a></span>
+            </div>
+        </div>        
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <a data-bind="click:logout" class="btn btn-clear" style="width:100%;">Logout</a>
+            </div>
+        </div>   
+    </div>
+    
+    
+    
+    <!-- End View -->
+</div>

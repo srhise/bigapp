@@ -4,6 +4,9 @@ app.home = kendo.observable({
         app.home.homeModel.email = '';
         app.home.homeModel.password = '';
     },
+    onBeforeShow: function() {
+    	
+    },
    	init: function() {       
         
         var initialScreenSize = window.innerHeight;
@@ -14,7 +17,16 @@ app.home = kendo.observable({
         	else{
             	$("[data-role=footer]").show();
         	}
-        });   
+        }); 
+        
+        var invalidLogin = app.events.subscribe('loginerror', function() {
+            swal({
+                title: "Invalid Credentials",
+                text: "We were unable to login using the provided credentials. Please try again.",
+                type: "error"
+            });
+        });
+        
     }
 });
 
@@ -59,8 +71,11 @@ app.home = kendo.observable({
                 if (!model.validateData(model)) {
                         return false;
                 }
-
-                app.mobileApp.navigate('views/activityList.html');
+                
+				app.mobileApp.pane.loader.show(); //show loading animation
+                app.middleWare.appLogin({user:email, pass: password});
+                
+                //app.mobileApp.navigate('views/activityList.html');
            		//provider.Users.login(email, password, successHandler, init);
                            
             },

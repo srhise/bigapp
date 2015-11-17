@@ -1233,12 +1233,17 @@ h4 {
     overflow:hidden;
 }
 
-.circle .photo-icon {
+.photo-container {
+    position:relative;
+}
+
+.photo-container .photo-icon {
     color: #fff;
     font-size: 22px;
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 16px;
+    z-index:10;
 }
 
 .circle > a > div {

@@ -14,16 +14,15 @@
 	<!-- Start View -->
     <div class="profile-header container-fluid">
         <div class="row">
-            <div class="col-xs-4">
-                <div class="circle">
-                    <i class="fa fa-camera photo-icon"></i>
+            <div class="col-xs-4 photo-container">
+                <i class="fa fa-camera photo-icon"></i>
+                <div class="circle">                    
 					<a data-bind="click:addImage">
                         <img width="120" data-bind="attr: { src: photo }" />
 					</a>
 				</div>
             </div>
             <div class="col-xs-7 col-xs-offset-1">
-                
                 <span class="name" data-bind="text:profile.fullName"></span>
                 <span class="since">Match Date: <span class="inline" data-bind="text:profile.matchDate"></span></span>
                 <a href="#views/updateInfo.html" class="btn btn-white m-t-5"><i class="fa fa-edit"></i> Update Info</a>
@@ -42,10 +41,10 @@
                 <span class="little-name" data-bind="text:profile.childFirstName"></span>
             </div>
             <div class="col-xs-3">
-                <span class="little-age little-item"><i class="fa fa-smile-o"></i><strong>Age</strong> <span class="inline" data-bind="text:profile.childAge"></span></span>
+                <span class="little-age little-item"><i class="fa fa-smile-o" style="color:#058acf;"></i><strong>Age</strong> <span class="inline" data-bind="text:profile.childAge"></span></span>
             </div>
             <div class="col-xs-5">
-                 <span class="little-birthday little-item"><i class="fa fa-birthday-cake"></i><strong>Birthdate</strong><br/><span class="inline dob" data-bind="text:profile.childDOB"></span></span>
+                 <span class="little-birthday little-item"><i class="fa fa-birthday-cake" style="color:#f7403a;"></i><strong>Birthdate</strong><br/><span class="inline dob" data-bind="text:profile.childDOB"></span></span>
             </div>
         </div>        
     </div>
@@ -59,9 +58,9 @@
         <div class="row card-content emergency-contact">
             <div class="col-xs-12">
                 <span class="name" data-bind="text:profile.matchSupportName"></span>
-                <span class="phone"><strong>Business Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportBusinessPhone"></a></span>
-                <span class="phone"><strong>Cell Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportCellPhone"></a></span>
-                <span class="phone"><strong>Email</strong> <a class="inline" data-bind="text:profile.matchSupportEmail"></a></span>
+                <span class="phone"><strong>Business Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportBusinessPhone, attr:{href:matchSupportBusinessPhoneHref}"></a></span>
+                <span class="phone"><strong>Cell Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportCellPhone, attr:{href:matchSupportCellPhoneHref}"></a></span>
+                <span class="phone"><strong>Email</strong> <a class="inline" data-bind="text:profile.matchSupportEmail, attr:{href:matchSupportEmailHref}"></a></span>
             </div>
         </div>        
     </div>
@@ -74,9 +73,9 @@
         </div>
         <div class="row card-content emergency-contact">
             <div class="col-xs-12">
-                <span class="name" data-bind="text:profile.matchSupportName">Sue Fisher</span>
-                <span class="phone"><strong>Cell Phone:</strong> <a class="inline" data-bind="text:profile.matchSupportCellPhone, attr:{href: profile.matchSupportCellPhone}"></a></span>
-                <span class="phone"><strong>Email</strong> <a class="inline" data-bind="text:profile.matchSupportEmail"></a></span>
+                <span class="name" data-bind="text:profile.emergencyContactName"></span>
+                <span class="phone"><strong>Cell Phone:</strong> <a class="inline" data-bind="text:profile.emergencyContactPhone"></a></span>
+                <span class="phone"><strong>Email</strong> <a class="inline" data-bind="text:profile.emergencyContactEmail"></a></span>
             </div>
         </div>        
     </div>

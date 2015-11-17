@@ -11,7 +11,7 @@ app.activityDetails = (function () {
         var init = function () {
             var activitySubscription = app.events.subscribe('singleActivityLoaded', function(activity) {
                 if (activity.mediaURL == null) {
-                    activity.mediaURL = 'https://placeholdit.imgix.net/~text?txtsize=30&txt=380%C3%97180&w=380&h=180';
+                    activity.mediaURL = '';
                 }
                 viewModel.set("activity", [activity]);
             });

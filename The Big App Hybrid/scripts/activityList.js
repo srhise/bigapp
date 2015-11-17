@@ -85,6 +85,7 @@ app.activityList = (function () {
                   $('.star-hover').text("");
                 }
             }).data('kendoReplyRating');
+            
         }
         var afterShow = function () {
             if (viewModel.hasFilters) {

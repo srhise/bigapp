@@ -10,7 +10,7 @@ app.profile = (function () {
             addImage: function() {
                 var success = function (data) {
                     viewModel.set("photo", 'data:image/jpg;base64,' + data);
-                    app.middleWare.appPicture(20, viewModel.photo);
+                    app.middleWare.appPicture(app.state.model.user.id, viewModel.photo);
                 };
                 var error = function () {
                     if (typeof errorCallback != "undefined") {
@@ -27,7 +27,7 @@ app.profile = (function () {
                     targetHeight: 300,
                     correctOrientation: 1, 
                     saveToPhotoAlbum: 0,
-                    quality: 85
+                    quality: 95
                 };
                 navigator.camera.getPicture(success, error, config);
             },
@@ -69,6 +69,9 @@ app.profile = (function () {
         
         var formatExternalLinks = function() {
             // Match Support Phone & Email
+            viewModel.set("matchSupportBusinessPhoneHref", 'tel:' + viewModel.profile.matchSupportBusinessPhone );
+            viewModel.set("matchSupportCellPhoneHref", 'tel:' + viewModel.profile.matchSupportCellPhone );
+            viewModel.set("matchSupportEmailHref", 'mailto:' + viewModel.profile.matchSupportEmail );
             
             // Emergency Contact Phone & Email
         }

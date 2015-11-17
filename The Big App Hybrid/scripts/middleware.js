@@ -156,9 +156,8 @@ app.middleWare = (function () {
         
         var resetPassword = function(email, callback) {
             $.ajax({
-                url: API_HOST + '/apppassword/',
-                type: 'PUT',
-                data: {email: email},
+                url: API_HOST + '/apppassword?email='+email,
+                type: 'GET',
                 success: function(response) {
                     callback(response);
                 },

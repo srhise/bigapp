@@ -44,6 +44,13 @@ app.activityList = (function () {
             	app.middleWare.getActivity(e.data.id);
                 app.mobileApp.navigate('views/activityDetails.html');
             },
+            addToAgenda: function(e) {
+            	app.middleWare.addToAgenda(app.state.model.user.id, e.data.id, function() {
+                    app.mobileApp.navigate('#views/myPlanner.html');
+                    app.middleWare.getActivityAgenda(app.state.model.user.id);
+            		app.middleWare.getEventAgenda(app.state.model.user.id);
+                });
+            },
             indicatorPopup: function(e) {
                 app.middleWare.getIndicator(e.data.indicatorID);
             }

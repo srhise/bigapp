@@ -19,8 +19,6 @@ app.state = (function () {
             var filterSubscription = app.events.subscribe('filterChange', function(filters) {
                 handleFilters(filters);
             });
-            
-            
         }
         
         var handleAPIError = function(error) {
@@ -50,6 +48,16 @@ app.state = (function () {
         var handleIndicatorRequest = function(indicator) {
             app.events.publish('indicatorDetails', indicator);
         }
+        
+        var handleAgenda = function(agendaItems, type) {
+            if (type == 'event') {
+                app.events.publish('newAgendaEvents', agendaItems);
+            }
+            
+            if (type == 'activity') {
+                app.events.publish('newAgendaActivities', agendaItems);
+            }
+        }       
         
         var handleFilters = function(filters) {
             filters.ages = filters.ages.filter(function( item ) {
@@ -97,6 +105,7 @@ app.state = (function () {
             handleCategories: handleCategories,
             handleIndicators: handleIndicators,
             handleIndicatorRequest: handleIndicatorRequest,
+            handleAgenda: handleAgenda,
             handleFilters: handleFilters,
             handleLogin: handleLogin,
             handleLogout: handleLogout,

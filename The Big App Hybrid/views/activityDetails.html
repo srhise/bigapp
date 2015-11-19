@@ -12,11 +12,14 @@
      data-use-native-scrolling="true"
      >
 	<!-- Start View -->
+    
     <div class="feat-img" data-template="feat-img" data-bind="source: activity">
         
     </div>
     <script type="text/x-kendo-template" id="feat-img">
-    	<img class="img-responsive" src="#:mediaURL#"/>
+    	# if (mediaAttach) { #
+    	<img class="img-responsive" src="#:mediaAttach#"/>
+    	# } #
     </script>
     <ul id="activityDetail" data-role="listview" class="listView" data-bind="source: activity" data-template="activity-template">
     </ul>
@@ -50,8 +53,10 @@
             <span>#:city #, #: state# #: zip #</span>
             # } #
             
+            # if (lat && lng) { #
             <img src="https://maps.googleapis.com/maps/api/staticmap?center=#:lat#,#:lng#&key=AIzaSyCcV_2Jvoul2LAv4dmSBkoBi0aOkkLm_-k&size=380x200&zoom=13" width="100%"/>
-            <a href="" target="_blank" class="btn btn-primary btn-map"><i class="fa fa-map"></i> &nbsp;Get Directions</a>
+            <a href="http://maps.google.com/?q=#:lat#,#:lng#" target="_blank" class="btn btn-primary btn-map"><i class="fa fa-map"></i> &nbsp;Get Directions</a>
+       		# } #
         </div>
        
         
@@ -64,6 +69,7 @@
     <script type="text/x-kendo-template" id="accordion-template">
     	<div class="bs-example">
             <div class="panel-group" id="accordion">
+                # if (perks) { #
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -75,6 +81,9 @@
                         </div>
                     </div>
                 </div>
+                # } #
+                
+                # if (additionalInfo) { #
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -86,6 +95,7 @@
                         </div>
                     </div>
                 </div>
+                # } #
             </div>
         </div>
     </script>

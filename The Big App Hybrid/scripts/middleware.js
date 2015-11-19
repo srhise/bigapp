@@ -13,11 +13,9 @@ app.middleWare = (function () {
             url: API_HOST + '/activities',
             type: 'GET',
             success: function(response) {
-               app.mobileApp.pane.loader.hide(); //hide loading animation
                app.state.handleActivities(response);
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.mobileApp.pane.loader.hide(); //hide loading animation
                app.state.handleAPIError();
             }
          });
@@ -167,6 +165,79 @@ app.middleWare = (function () {
            });
         }
         
+        var getActivityAgenda = function(userId) {
+            $.ajax({
+                url: API_HOST + '/agenda/?userId='+userId+'&type=activity',
+                type: 'GET',
+                success: function(response) {
+                    app.mobileApp.pane.loader.hide(); //hide loading animation
+               		app.state.handleAgenda(response, 'activity');
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var getEventAgenda = function(userId, type) {
+            $.ajax({
+                url: API_HOST + '/agenda/?userId='+userId+'&type=event',
+                type: 'GET',
+                success: function(response) {
+                    app.mobileApp.pane.loader.hide(); //hide loading animation
+               		app.state.handleAgenda(response, 'event');
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var addToAgenda = function(userID, activityID, callback) {
+            //http:///bigappadmin.azurewebsites.net/api/Agenda/
+            var obj = {userID: userID, activityID: activityID};
+            $.ajax({
+                url: API_HOST + '/agenda/',
+                type: 'POST',
+                data: obj,
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var deleteFromAgenda = function(agendaID, userID) {
+            $.ajax({
+                url: API_HOST + '/agenda?agendaID='+agendaID+'&userID='+userID,
+                type: 'DELETE',
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var markComplete = function(agendaID, comment, rating, date) {
+            //http:///bigappadmin.azurewebsites.net/api/Agenda/
+            var obj = {agendaID: agendaID, comment: comment, rating: rating, date: date};
+            $.ajax({
+                url: API_HOST + '/agenda/',
+                type: 'POST',
+                data: obj,
+                success: function(response) {
+                    callback(response);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
         return {
             getActivities: getActivities,
             getEvents: getEvents,
@@ -178,7 +249,11 @@ app.middleWare = (function () {
             appPicture: appPicture,
             appUser: appUser,
             updateUser: updateUser,
-            resetPassword: resetPassword
+            resetPassword: resetPassword,
+            getActivityAgenda: getActivityAgenda,
+            getEventAgenda: getEventAgenda,
+            addToAgenda: addToAgenda,
+            deleteFromAgenda: deleteFromAgenda
         };
     }());
     return module;

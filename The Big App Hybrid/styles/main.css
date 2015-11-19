@@ -1006,6 +1006,11 @@ div.action-bar a.favorite i {
     border-color:#e0119d;
 }
 
+div.action-bar a.remove i {
+    color:red;
+    border-color:red;
+}
+
 div.action-bar a.complete i {
     color:#69be28;
     border-color:#69be28;
@@ -1357,4 +1362,12 @@ h4 {
 
 .form input {
     margin-bottom:10px;
+}
+
+/* My Planner */
+
+.agenda-header {
+    margin-top:10px;
+    padding:5px;
+    text-align:center;
 }

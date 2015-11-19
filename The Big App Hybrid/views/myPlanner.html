@@ -1,34 +1,20 @@
 <div class="view-container" 
      data-role="view" 
-     id="activityList" 
-     data-title="Activities" 
-     data-layout="activities-header" 
-     data-model="app.activityList.viewModel" 
-     data-init="app.activityList.init" 
-     data-show="app.activityList.show" 
-     data-before-show="app.activityList.onBeforeShow"
-     data-after-show="app.activityList.afterShow"
-     data-hide="app.activityList.hide" 
+     id="myPlanner" 
+     data-title="My Planner" 
+     data-layout="planner-header" 
+     data-model="app.myPlanner.viewModel" 
+     data-init="app.myPlanner.init" 
+     data-show="app.myPlanner.show" 
+     data-before-show="app.myPlanner.onBeforeShow"
+     data-after-show="app.myPlanner.afterShow"
+     data-hide="app.myPlanner.hide" 
      data-use-native-scrolling="true"
      >
 	<!-- Start View -->
     <!-- Start View -->
-    <div class="stats activitiesListView" data-template="stats-activity" data-bind="source: state">
-    </div>
-     <script type="text/x-kendo-template" id="stats-activity">
-         <div class="container-fluid m-t-10">
-         	<div class="row">
-            	<div class="col-xs-8 p-0">
-                    <h4>
-                        <span data-bind="text:totalActivities"></span> Activities
-                    </h4>
-                </div>
-                <div class="col-xs-4 p-0">
-                	<a class="btn btn-clear" style="display:block;float:right;" href="\\#views/filterActivities.html">Show Filters</a>
-                </div>
-            </div>
-         </div>
-    </script>
+   	
+	<div class="agenda-header"><strong>Review and Modify your Chosen Activities</strong></div>
    
     <div class="empty activitiesListView" data-template="empty-activity" data-bind="source: state">
         
@@ -39,10 +25,10 @@
         	<p>No activities were found using the chosen criteria. Please check upcoming events or change your search criteria <a href="\\#views/filterActivities.html">here</a>.</p>
         </div>
     </script>
-    <ul data-role="listview" class="listView activitiesListView" data-bind="source: activities" data-template="foo-template">
+    <ul data-role="listview" class="listView activitiesListView" data-bind="source: activities" data-template="activities-template">
     </ul>
-    <script type="text/x-kendo-template" id="foo-template">
-        <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
+    <script type="text/x-kendo-template" id="activities-template">
+        <div title="#:indicator#" rel="tooltip" class="indicator">
         	#: indicator #
         </div>
         <div class="meta">
@@ -63,41 +49,24 @@
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="inquire">
+                    <a class="inquire" data-bind="click:inquireActivity">
                         <i class="fa fa-comment-o"></i>Inquire
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="favorite">
-                        <i class="fa fa-heart-o" data-bind="click: addToAgenda"></i>Favorite
+                    <a class="remove" data-bind="click:removeActivity">
+                        <i class="fa fa-times"></i>Remove
                     </a>
                 </div>
-                <!--
                 <div class="col-xs-3">
-                    <a class="complete">
-                        <i class="fa fa-check"></i>Complete
+                    <a class="complete" data-bind="click:trackActivity">
+                        <i class="fa fa-check"></i>Track
                     </a>
                 </div>
-                -->
             </div>
        </div>
     </script>
-    <div class="stats eventsListView passiveHide" data-template="stats-events" data-bind="source: state">
-    </div>
-     <script type="text/x-kendo-template" id="stats-events">
-         <div class="container-fluid m-t-10">
-         	<div class="row">
-            	<div class="col-xs-8 p-0">
-                    <h4>
-                        <span data-bind="text:totalEvents"></span> Events
-                    </h4>
-                </div>
-                <div class="col-xs-4 p-0">
-                	<a class="btn btn-filter" style="display:block;float:right;" href="\\#views/filterActivities.html">Show Filters</a>
-                </div>
-            </div>
-         </div>
-    </script>
+   
     <div class="empty eventsListView passiveHide" data-template="empty-event" data-bind="source: state">
         
     </div>
@@ -107,14 +76,14 @@
             <p>No events were found using the chosen criteria. Please check upcoming events or change your search criteria <a href="\\#views/filterActivities.html">here</a>.</p>
         </div>
     </script>
-    <ul data-role="listview" class="listView eventsListView passiveHide" data-bind="source: events" data-template="events-template">
+    <ul data-role="listview" class="listView eventsListView passiveHide" data-bind="source: events" data-template="events-agenda-template">
     </ul>
-    <script type="text/x-kendo-template" id="events-template">
+    <script type="text/x-kendo-template" id="events-agenda-template">
         <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
         	#: indicator #
         </div>
         <div class="meta">
-            <span class="cost">#= kendo.toString(new Date(date), 'MM/dd/yyyy') #</span>
+            <span class="cost">#= kendo.toString(new Date(activityDate), 'MM/dd/yyyy') #</span>
             <span class="title" data-bind="click:loadActivity">#: name #</span>
             <span class="description">#: description #</span>
             <div class="rating">
@@ -126,18 +95,23 @@
         <div class="container-fluid action-bar">
             <div class="row">
                 <div class="col-xs-3">
-                    <a class="details" data-bind="click:loadActivity">
+                    <a class="details" data-bind="click:inquireActivity">
                         <i class="fa fa-ellipsis-h"></i>Details
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="inquire">
+                    <a class="inquire" data-bind="click:inquireActivity">
                         <i class="fa fa-comment-o"></i>Inquire
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="complete" data-bind="click: addToAgenda">
-                        <i class="fa fa-calendar"></i>Add to Planner
+                    <a class="remove" data-bind="click:removeActivity">
+                        <i class="fa fa-times"></i>Remove
+                    </a>
+                </div>
+                <div class="col-xs-3">
+                    <a class="complete" data-bind="click:trackActivity">
+                        <i class="fa fa-check"></i>Track
                     </a>
                 </div>
             </div>

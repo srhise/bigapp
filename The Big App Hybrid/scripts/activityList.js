@@ -11,6 +11,9 @@ app.activityList = (function () {
             filters: [],
             activeFilters: [],
             hasFilters: false,
+            matchSupportEmail: function(e) {
+               return "mailto:"+ app.state.model.user.matchSupportEmail + '?subject=App Activity Inquiry&body='+e.name;
+            },
             totalActivities: function() {
                 var activities = viewModel.get("activities");
                 return activities.length;
@@ -45,10 +48,25 @@ app.activityList = (function () {
                 app.mobileApp.navigate('views/activityDetails.html');
             },
             addToAgenda: function(e) {
-            	app.middleWare.addToAgenda(app.state.model.user.id, e.data.id, function() {
+                app.middleWare.addToAgenda(app.state.model.user.id, e.data.id, function() {
+                    app.utilities.showToast('Successfully added ' + e.data.name + ' to Planner');
                     app.mobileApp.navigate('#views/myPlanner.html');
                     app.middleWare.getActivityAgenda(app.state.model.user.id);
             		app.middleWare.getEventAgenda(app.state.model.user.id);
+                });
+            },
+            addToCalendar: function(e) {
+            	// Adding to calendar
+                var cal = window.plugins.calendar;
+                var title = e.data.name;
+                var loc = e.data.locName;
+                var notes = e.data.description;
+                var start = new Date(e.data.date); // Jan 1st, 2015 20:00
+                var end = new Date(e.data.date); // Jan 1st, 2015 20:00
+                cal.createEventInteractively(title, loc, notes, start, end, function() {
+                	console.log('success');
+                }, function() {
+                    console.log('failure');
                 });
             },
             indicatorPopup: function(e) {
@@ -61,11 +79,14 @@ app.activityList = (function () {
                 viewModel.set("snapshot", Defiant.getSnapshot(activities));
                 viewModel.set("activities", activities);
                 app.utilities.handleTooltips();
+                app.mobileApp.pane.loader.hide(); //hide loading animation
             });
             
             var eventSubscription = app.events.subscribe('newEvents', function(events) {
                 viewModel.set("eventSnapshot", Defiant.getSnapshot(events));
                 viewModel.set("events", events);
+                viewModel.set("cal", ics());
+				viewModel.cal.addEvent('Christmas', 'Christian holiday celebrating the birth of Jesus Christ', 'Bethlehem', '12/25/2013', '12/25/2013');
             });
             
             var filterSubscription = app.events.subscribe('newFilters', function(filters) {

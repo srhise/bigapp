@@ -63,7 +63,7 @@
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="inquire">
+                    <a class="inquire" data-bind="attr:{href:matchSupportEmail}">
                         <i class="fa fa-comment-o"></i>Inquire
                     </a>
                 </div>
@@ -72,13 +72,9 @@
                         <i class="fa fa-heart-o" data-bind="click: addToAgenda"></i>Favorite
                     </a>
                 </div>
-                <!--
-                <div class="col-xs-3">
-                    <a class="complete">
-                        <i class="fa fa-check"></i>Complete
-                    </a>
-                </div>
-                -->
+                
+               
+ 
             </div>
        </div>
     </script>
@@ -131,7 +127,7 @@
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="inquire">
+                    <a class="inquire" data-bind="attr:{href:matchSupportEmail}">
                         <i class="fa fa-comment-o"></i>Inquire
                     </a>
                 </div>
@@ -139,6 +135,14 @@
                     <a class="complete" data-bind="click: addToAgenda">
                         <i class="fa fa-calendar"></i>Add to Planner
                     </a>
+                </div>
+                
+                <div class="col-xs-3">
+                	# if (registrationLink != '' && registrationLink != null) { #
+                        <a target="_blank" href="#:registrationLink#" class="favorite">
+                            <i class="fa fa-clipboard"></i>Register
+                        </a>
+                    # } #                    
                 </div>
             </div>
        </div>

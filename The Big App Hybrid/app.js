@@ -89,7 +89,19 @@
             if (navigator && navigator.splashscreen) {
                 navigator.splashscreen.hide();
             }
+	
+            /*
+            var now             = new Date().getTime(),
+                _5_sec_from_now = new Date(now + 5*1000);
 
+            cordova.plugins.notification.local.schedule({
+                text: "Delayed Notification",
+                at: _5_sec_from_now,
+                led: "FF0000",
+                sound: null
+            });	
+            */
+            
             bootstrap();
         }, false);
     } else {

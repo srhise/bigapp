@@ -94,6 +94,10 @@ app.state = (function () {
          var handleInvalidLogin = function() {
              app.events.publish('loginerror', ['Invalid Login or Password Specified']);
         }
+         
+        var handleComplete = function(response) {
+            app.events.publish('activityComplete', response);
+        }
         
         return {
             model: model,
@@ -109,7 +113,8 @@ app.state = (function () {
             handleFilters: handleFilters,
             handleLogin: handleLogin,
             handleLogout: handleLogout,
-            handleInvalidLogin: handleInvalidLogin
+            handleInvalidLogin: handleInvalidLogin,
+            handleComplete: handleComplete
         };
     }());
     return module;

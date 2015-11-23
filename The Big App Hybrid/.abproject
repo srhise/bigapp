@@ -13,14 +13,14 @@
   ],
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
-  "FrameworkVersion": "3.7.0",
+  "FrameworkVersion": "4.0.0",
   "AndroidPermissions": [
     "android.permission.INTERNET"
   ],
   "DeviceOrientations": [
     "Portrait"
   ],
-  "AndroidHardwareAcceleration": "False",
+  "AndroidHardwareAcceleration": "True",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",
@@ -41,6 +41,11 @@
     "ID_RESOLUTION_HD720P"
   ],
   "CorePlugins": [
-    "org.apache.cordova.network-information"
+    "cordova-plugin-camera",
+    "cordova-plugin-network-information",
+    "cordova-plugin-whitelist",
+    "de.appplant.cordova.plugin.local-notification@0.8.2",
+    "nl.x-services.plugins.calendar@4.4.4",
+    "nl.x-services.plugins.toast@2.2.1"
   ]
 }

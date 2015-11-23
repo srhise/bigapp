@@ -11,6 +11,10 @@ app.myPlanner = (function () {
             filters: [],
             activeFilters: [],
             hasFilters: false,
+            rating: null,
+            matchSupportEmail: function(e) {
+               return "mailto:"+ app.state.model.user.matchSupportEmail + '?subject=App Activity Inquiry&body='+e.name;
+            },
             totalActivities: function() {
                 var activities = viewModel.get("activities");
                 return activities.length;
@@ -48,10 +52,65 @@ app.myPlanner = (function () {
             	alert(e.data.activityID );
             },
             trackActivity: function(e) {
-            	alert(e.data.activityID );
+                var agendaID = e.data.agendaID;
+            	swal({   
+                    title: "How did it go?",   
+                    text: "Your feedback is important. Please rate the activity and let us know if you have any further feedback.<div class='rating'><i data-id='1' class='rate fa fa-star inactive'></i><i data-id='2' class='rate fa fa-star inactive'></i><i data-id='3' class='rate fa fa-star inactive'></i><i data-id='4' class='rate fa fa-star inactive'></i><i data-id='5' class='rate fa fa-star inactive'></i></div><br/><textarea placeholder='additional feedback' rows='4'></textarea>",   
+                    html: true,
+                    inputPlaceholder: "Additional Feedback" 
+                	}, function (inputValue) {                       	
+                    	var comment = $('.sweet-alert textarea').val();
+                   		var date = new Date();
+                    	app.mobileApp.pane.loader.show();
+                    	app.middleWare.markComplete(agendaID, comment, viewModel.get("rating"), date);
+                	}
+                );
+                handleRating();
             },
             removeActivity: function(e) {
-            	app.middleWare.deleteFromAgenda(e.data.agendaID, app.state.model.user.id);
+                swal({   
+                    title: "Are you sure you want to remove this?",   
+                    text: "Click ok to confirm.",   
+                    type: "warning",   
+                    showCancelButton: true,   
+                    confirmButtonColor: "#8f23b3",   
+                    confirmButtonText: "Ok",   
+                    closeOnConfirm: false }, function(){
+                        app.middleWare.deleteFromAgenda(e.data.agendaID, app.state.model.user.id);
+                        $.each(viewModel.activities, function(index, value) {
+                            if(typeof value != "undefined" && value.activityID == e.data.activityID) viewModel.activities.splice(index,1);
+                        });
+                        swal({
+                            title: "Deleted!",
+                            text: "Your activity was successfully removed.", 
+                            type: "success",
+                            timer: 1500,   
+                            showConfirmButton: false
+                        }); 
+                });
+            	
+            },
+            removeEvent: function(e) {
+                swal({   
+                    title: "Are you sure you want to remove this?",   
+                    text: "Click ok to confirm.",   
+                    type: "warning",   
+                    showCancelButton: true,   
+                    confirmButtonColor: "#8f23b3",   
+                    confirmButtonText: "Ok",   
+                    closeOnConfirm: false }, function(){
+                        app.middleWare.deleteFromAgenda(e.data.agendaID, app.state.model.user.id);
+                        $.each(viewModel.events, function(index, value) {
+                            if(typeof value != "undefined" && value.activityID == e.data.activityID) viewModel.events.splice(index,1);
+                        });
+                        swal({
+                            title: "Deleted!",
+                            text: "Your activity was successfully removed.", 
+                            type: "success",
+                            timer: 1500,   
+                            showConfirmButton: false
+                        }); 
+                });
             },
             indicatorPopup: function(e) {
                 app.middleWare.getIndicator(e.data.indicatorID);
@@ -66,6 +125,16 @@ app.myPlanner = (function () {
             
             var eventSubscription = app.events.subscribe('newAgendaEvents', function(events) {
                 viewModel.set("events", events);
+            });
+            
+            var completeSubscription = app.events.subscribe('activityComplete', function(response) {
+                 app.mobileApp.pane.loader.hide();
+                 swal({
+                        title: "Success",
+                        type: "success",
+                        text: "You have successfully tracked this in your activity history! Thank you!."
+                 });
+                 
             });
             
             var indicatorSubscription = app.events.subscribe('indicatorDetails', function(indicator) {
@@ -118,6 +187,16 @@ app.myPlanner = (function () {
    			
         }
         
+        var handleRating = function() {
+            $('.rate').unbind('click').bind('click', function() {
+               var rating = $(this).data('id');
+               viewModel.set("rating", rating);
+               $(this).css('color', '#444444');
+               $(this).prevAll().css( "color", "#444444" );
+               x$(this).nextAll().css( "color", "#cccccc" );
+            });
+        }
+        
         return {
             viewModel: viewModel,
             init: init,
@@ -125,7 +204,8 @@ app.myPlanner = (function () {
             hide: hide,
             bindTabs: bindTabs,
             onBeforeShow: onBeforeShow,
-            afterShow: afterShow
+            afterShow: afterShow,
+            handleRating: handleRating
         };
     }());
     return module;

@@ -100,9 +100,20 @@ app.utilities = (function () {
             });
         }
         
+        var showToast = function(message) {
+              window.plugins.toast.showWithOptions(
+                {
+                  message: message,
+                  duration: "short",
+                  position: "top"
+                }
+              );
+        }
+        
         return {
             showActiveTabs: showActiveTabs,
-            handleTooltips: handleTooltips
+            handleTooltips: handleTooltips,
+            showToast: showToast
         };
     }());
     return module;

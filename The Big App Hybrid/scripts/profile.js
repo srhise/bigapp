@@ -20,14 +20,11 @@ app.profile = (function () {
                     }
                 };
                 var config = {
-                    encodingType: Camera.EncodingType.PNG,
+                    encodingType: Camera.EncodingType.JPEG,
                     destinationType: Camera.DestinationType.DATA_URL,
-                    allowEdit : false,
-                    targetWidth: 300,
-                    targetHeight: 300,
-                    correctOrientation: 1, 
-                    saveToPhotoAlbum: 0,
-                    quality: 95
+                    quality: 75,
+                    targetWidth:720,
+                    correctOrientation: true
                 };
                 navigator.camera.getPicture(success, error, config);
             },

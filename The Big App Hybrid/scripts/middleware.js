@@ -209,28 +209,30 @@ app.middleWare = (function () {
            });
         }
         
-        var deleteFromAgenda = function(agendaID, userID) {
+        var deleteFromAgenda = function(agendaID, userID, callback) {
             $.ajax({
                 url: API_HOST + '/agenda?agendaID='+agendaID+'&userID='+userID,
                 type: 'DELETE',
                 success: function(response) {
-                    callback(response);
+                    if (typeof callback == "function") {
+                    	callback(response);   
+                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                	app.state.handleAPIError();
                 }
            });
         }
         
         var markComplete = function(agendaID, comment, rating, date) {
-            //http:///bigappadmin.azurewebsites.net/api/Agenda/
+            var date = kendo.toString(new Date(date), 'MM/dd/yyyy');
             var obj = {agendaID: agendaID, comment: comment, rating: rating, date: date};
             $.ajax({
-                url: API_HOST + '/agenda/',
+                url: API_HOST + '/markcomplete',
                 type: 'POST',
                 data: obj,
                 success: function(response) {
-                    callback(response);
+                   app.state.handleComplete(response);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                    app.state.handleAPIError();
@@ -253,7 +255,8 @@ app.middleWare = (function () {
             getActivityAgenda: getActivityAgenda,
             getEventAgenda: getEventAgenda,
             addToAgenda: addToAgenda,
-            deleteFromAgenda: deleteFromAgenda
+            deleteFromAgenda: deleteFromAgenda,
+            markComplete: markComplete
         };
     }());
     return module;

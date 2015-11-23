@@ -31,7 +31,18 @@
         <div class="meta">
             <span class="cost">Free</span>
             <span class="title text-center">#: name #</span>
+            # if (type == '1') { #
             <a class="btn btn-primary btn-favorite"><i class="fa fa-heart-o"></i>&nbsp;Add to Favorites</a>
+            # } #
+            # if (type == '2') { #
+            	# if (registrationLink != '' && registrationLink != null) { #
+            		<a target="_blank" href="#:registrationLink#" class="btn btn-primary btn-favorite"><i class="fa fa-key"></i>&nbsp;Register</a>
+                # } else { #
+                	<br/>
+                	<span class="text-center"><strong>Registration is currently not available for this event</strong></span>
+                    <br/>
+                # } #
+            # } #
             <span class="description">#: description #</span>
             
             <span><strong>Age Group:</strong> #:ageGroup#</span>

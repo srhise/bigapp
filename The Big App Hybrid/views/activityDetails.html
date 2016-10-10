@@ -1,4 +1,5 @@
-<div class="view-container" 
+<div class="view-container"
+     data-reload="true"
      data-role="view" 
      id="activityDetails" 
      data-title="Activity Details" 
@@ -27,16 +28,17 @@
     	
         <div class="indicator">
         	#: indicator #
+            <span class="tooltip">#:indicatorDescription#"</span>
         </div>
         <div class="meta">
             <span class="cost">Free</span>
             <span class="title text-center">#: name #</span>
             # if (type == '1') { #
-            <a class="btn btn-primary btn-favorite"><i class="fa fa-heart-o"></i>&nbsp;Add to Favorites</a>
+            <a class="btn btn-primary btn-favorite" data-bind="click:addToAgenda"><i class="fa fa-heart-o"></i>&nbsp;Add to Favorites</a>
             # } #
             # if (type == '2') { #
             	# if (registrationLink != '' && registrationLink != null) { #
-            		<a target="_blank" href="#:registrationLink#" class="btn btn-primary btn-favorite"><i class="fa fa-key"></i>&nbsp;Register</a>
+            		<a data-bind="click:goToRegisterPage" class="btn btn-primary btn-favorite"><i class="fa fa-key"></i>&nbsp;Register</a>
                 # } else { #
                 	<br/>
                 	<span class="text-center"><strong>Registration is currently not available for this event</strong></span>
@@ -49,10 +51,21 @@
             <span><strong>Cost:</strong> #:costType#</span>
             <span><strong>Thriving Indicator:</strong> #:indicator#</span>
             <span><strong>Category:</strong> #:category#</span>
-			# if (logoURL) { #
-            <span><strong>Sponsored by:</strong> <img src="#:logoURL#" width="50" /></span>
+			# if (logoAttach) { #
+            <span><strong>Sponsored by:</strong> <img src="#:logoAttach#" width="200" /></span>
         	# } #
-        	<hr/>
+        	
+            # if (date && type!= '1') { #
+            <hr/>
+            <span><strong>Date: </strong>#= kendo.toString(new Date(dateString), 'MM/dd/yyyy') #</span>
+            # } #
+            # if (startTime) { #
+            <span><strong>Start Time: </strong> #:startTime#</span>
+            # } #
+            # if (endTime) { #
+            <span><strong>End Time: </strong> #:endTime#</span>
+            # } #
+            <hr/>
             # if (address1) { #
             <span><strong>Address:</strong><br/>
             <span>#:address1#</span>
@@ -60,13 +73,13 @@
             # if (address2) { # 
             <span>#:address2#</span>
             # } #
-             # if (city) { # 
+             # if (city && lat && lng) { # 
             <span>#:city #, #: state# #: zip #</span>
             # } #
             
             # if (lat && lng) { #
             <img src="https://maps.googleapis.com/maps/api/staticmap?center=#:lat#,#:lng#&key=AIzaSyCcV_2Jvoul2LAv4dmSBkoBi0aOkkLm_-k&size=380x200&zoom=13" width="100%"/>
-            <a href="http://maps.google.com/?q=#:lat#,#:lng#" target="_blank" class="btn btn-primary btn-map"><i class="fa fa-map"></i> &nbsp;Get Directions</a>
+            <a data-bind="click:goToMap" class="btn btn-primary btn-map"><i class="fa fa-map"></i> &nbsp;Get Directions</a>
        		# } #
         </div>
        
@@ -84,7 +97,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="\\#accordion" href="\\#collapseOne">Perks</a>
+                            Perks
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse in">
@@ -98,7 +111,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="\\#accordion" href="\\#collapseTwo">Additional Information</a>
+                            Additional Information
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">

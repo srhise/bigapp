@@ -6,14 +6,18 @@ var app = app || {};
 app.middleWare = (function () {
     var module = (function () {
         
-        var API_HOST = 'http://bigappadmin.azurewebsites.net/api';
+        var API_HOST = 'https://bigappdev.azurewebsites.net/api';
         
         var getActivities =  function() {
           $.ajax({
             url: API_HOST + '/activities',
             type: 'GET',
             success: function(response) {
-               app.state.handleActivities(response);
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handleActivities(response);   
+               }               
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -26,7 +30,28 @@ app.middleWare = (function () {
             url: API_HOST + '/events',
             type: 'GET',
             success: function(response) {
-               app.state.handleEvents(response);
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handleEvents(response); 
+               }
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+               app.state.handleAPIError();
+            }
+         });
+        }
+        
+        var getPastEvents =  function() {
+          $.ajax({
+            url: API_HOST + '/pastevents',
+            type: 'GET',
+            success: function(response) {
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handlePastEvents(response);
+               }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -39,10 +64,15 @@ app.middleWare = (function () {
             url: API_HOST + '/activities/'+id,
             type: 'GET',
             success: function(response) {
-            	app.state.handleActivity(response);
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handleActivity(response);
+               }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -52,7 +82,11 @@ app.middleWare = (function () {
             url: API_HOST + '/indicator',
             type: 'GET',
             success: function(response) {
-            	app.state.handleIndicators(response);
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handleIndicators(response);
+               }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -65,7 +99,11 @@ app.middleWare = (function () {
             url: API_HOST + '/indicator/'+id,
             type: 'GET',
             success: function(response) {
-            	app.state.handleIndicatorRequest(response);
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handleIndicatorRequest(response);
+               }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -78,7 +116,11 @@ app.middleWare = (function () {
             url: API_HOST + '/categories/',
             type: 'GET',
             success: function(response) {
-            	app.state.handleCategories(response);
+               if (response.Error === 'unauthorized') {
+                 app.state.handleUnauthorized();
+               } else {
+                 app.state.handleCategories(response);
+               }
             },
             error: function(xhr, ajaxOptions, thrownError) {
                app.state.handleAPIError();
@@ -92,10 +134,11 @@ app.middleWare = (function () {
             data: data,
             type: 'POST',
             success: function(response) {
-                app.mobileApp.pane.loader.hide(); //hide loading animation
-            	app.state.handleLogin(response);                
+               app.mobileApp.pane.loader.hide(); //hide loading animation
+               app.state.handleLogin(response);                
             },
             error: function(xhr, ajaxOptions, thrownError) {
+               alert(JSON.stringify(thrownError));
                app.mobileApp.pane.loader.hide(); //hide loading animation
                if (xhr.status == 401) {
                    app.state.handleInvalidLogin();
@@ -114,8 +157,12 @@ app.middleWare = (function () {
                 data: data,
                 type: 'POST',
                 success: function(response) {
-                    app.mobileApp.pane.loader.hide(); //hide loading animation
-                    callback(response);
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     app.mobileApp.pane.loader.hide(); //hide loading animation
+                     callback(response);
+                   }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                    app.mobileApp.pane.loader.hide(); //hide loading animation
@@ -170,8 +217,12 @@ app.middleWare = (function () {
                 url: API_HOST + '/agenda/?userId='+userId+'&type=activity',
                 type: 'GET',
                 success: function(response) {
-                    app.mobileApp.pane.loader.hide(); //hide loading animation
-               		app.state.handleAgenda(response, 'activity');
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     app.mobileApp.pane.loader.hide(); //hide loading animation
+               		 app.state.handleAgenda(response, 'activity');
+                   }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                    app.state.handleAPIError();
@@ -184,8 +235,12 @@ app.middleWare = (function () {
                 url: API_HOST + '/agenda/?userId='+userId+'&type=event',
                 type: 'GET',
                 success: function(response) {
-                    app.mobileApp.pane.loader.hide(); //hide loading animation
-               		app.state.handleAgenda(response, 'event');
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     app.mobileApp.pane.loader.hide(); //hide loading animation
+               		 app.state.handleAgenda(response, 'event');
+                   }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                    app.state.handleAPIError();
@@ -201,7 +256,11 @@ app.middleWare = (function () {
                 type: 'POST',
                 data: obj,
                 success: function(response) {
-                    callback(response);
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     callback(response);
+                   }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                    app.state.handleAPIError();
@@ -214,9 +273,13 @@ app.middleWare = (function () {
                 url: API_HOST + '/agenda?agendaID='+agendaID+'&userID='+userID,
                 type: 'DELETE',
                 success: function(response) {
-                    if (typeof callback == "function") {
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     if (typeof callback == "function") {
                     	callback(response);   
-                    }
+                     }
+                   }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                 	app.state.handleAPIError();
@@ -232,12 +295,71 @@ app.middleWare = (function () {
                 type: 'POST',
                 data: obj,
                 success: function(response) {
-                   app.state.handleComplete(response);
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     app.state.handleComplete(response);
+                   }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                    app.state.handleAPIError();
                 }
            });
+        }
+        
+        var historyList = function(userId, callback) {
+             $.ajax({
+                url: API_HOST + '/history/'+userId,
+                type: 'GET',
+                success: function(response) {
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     callback(response);
+                   }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var historyYear = function(userId, callback) {
+             $.ajax({
+                url: API_HOST + '/historyyear/'+userId,
+                type: 'GET',
+                success: function(response) {
+                   if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                   } else {
+                     callback(response);
+                   }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var historyIndicators = function(userId, callback) {
+            $.ajax({
+                url: API_HOST + '/historyindicators/'+userId,
+                type: 'GET',
+                success: function(response) {
+                    if (response.Error === 'unauthorized') {
+                     app.state.handleUnauthorized();
+                    } else {
+                     callback(response);
+                    }
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                   app.state.handleAPIError();
+                }
+           });
+        }
+        
+        var getAddressLink = function(lat,lng) {
+            
         }
         
         return {
@@ -256,7 +378,12 @@ app.middleWare = (function () {
             getEventAgenda: getEventAgenda,
             addToAgenda: addToAgenda,
             deleteFromAgenda: deleteFromAgenda,
-            markComplete: markComplete
+            markComplete: markComplete,
+            historyList: historyList,
+            historyYear: historyYear,
+            historyIndicators: historyIndicators,
+            getPastEvents: getPastEvents,
+            getAddressLink: getAddressLink
         };
     }());
     return module;

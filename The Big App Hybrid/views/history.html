@@ -1,0 +1,59 @@
+<div class="view-container" 
+     data-role="view" 
+     id="history" 
+     data-title="History" 
+     data-layout="history-header" 
+     data-model="app.History.viewModel" 
+     data-init="app.History.init" 
+     data-show="app.History.show" 
+     data-before-show="app.History.onBeforeShow"
+     data-after-show="app.History.afterShow"
+     data-hide="app.History.hide" 
+     data-use-native-scrolling="true"
+     >
+	
+    <!-- Start View -->
+    <div class="container-fluid">
+        <div class="row statsTabContent">
+            <div class="col-xs-12">
+                <strong class="chart-header text-left">
+                    Activities over Time
+                </strong>
+                <div id="columnChart" style="width:100%;height:100px;">
+                    
+                </div>
+                <strong class="chart-header">
+                    Activities by Thriving Indicator
+                </strong>
+                <div id="donutChart" style="width:100%;height:350px;">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="row historyTabContent">
+            <div class="col-xs-12">
+                <strong class="chart-header text-left">
+                    Activity History
+                </strong>
+                <ul data-role="listview" class="listView activitiesListView" data-bind="source: historyList" data-template="history-template">
+                </ul>
+                <script type="text/x-kendo-template" id="history-template">
+                    <div class="meta">
+                        <span class="cost">#: littleName #</span>
+                        <span class="title">#: activityName #</span>
+                        <span class="description">#: date #</span>
+                        <div class="rating">Your Rating <br/>
+                        # for (i = 0; i < rating; i++) { #
+                            <i class="fa fa-star"></i>
+                        # } #
+                        </div>
+                        <br/>
+                    </div>
+                </script>
+            </div>
+        </div>
+    </div>    
+    <!-- End View -->
+    
+</div>

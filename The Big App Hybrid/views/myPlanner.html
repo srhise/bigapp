@@ -28,8 +28,9 @@
     <ul data-role="listview" class="listView activitiesListView" data-bind="source: activities" data-template="activities-template">
     </ul>
     <script type="text/x-kendo-template" id="activities-template">
-        <div title="#:indicator#" rel="tooltip" class="indicator">
+        <div class="indicator">
         	#: indicator #
+            <span class="tooltip">#:indicatorDescription#"</span>
         </div>
         <div class="meta">
             <span class="cost">Free</span>
@@ -79,8 +80,9 @@
     <ul data-role="listview" class="listView eventsListView passiveHide" data-bind="source: events" data-template="events-agenda-template">
     </ul>
     <script type="text/x-kendo-template" id="events-agenda-template">
-        <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
+        <div class="indicator">
         	#: indicator #
+            <span class="tooltip">#:indicatorDescription#"</span>
         </div>
         <div class="meta">
             <span class="cost">#= kendo.toString(new Date(activityDate), 'MM/dd/yyyy') #</span>
@@ -95,7 +97,7 @@
         <div class="container-fluid action-bar">
             <div class="row">
                 <div class="col-xs-3">
-                    <a class="details" data-bind="click:inquireActivity">
+                    <a class="details" data-bind="click:loadActivity">
                         <i class="fa fa-ellipsis-h"></i>Details
                     </a>
                 </div>

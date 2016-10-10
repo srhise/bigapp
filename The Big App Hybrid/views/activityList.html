@@ -42,11 +42,12 @@
     <ul data-role="listview" class="listView activitiesListView" data-bind="source: activities" data-template="foo-template">
     </ul>
     <script type="text/x-kendo-template" id="foo-template">
-        <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
+        <div class="indicator">
         	#: indicator #
+            <span class="tooltip">#:indicatorDescription#</span>
         </div>
         <div class="meta">
-            <span class="cost">Free</span>
+            <span class="cost">#:costType#</span>
             <span class="title"  data-bind="click:loadActivity">#: name #</span>
             <span class="description">#: description #</span>
             <div class="rating">
@@ -63,13 +64,19 @@
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="inquire" data-bind="attr:{href:matchSupportEmail}">
+                    <a class="inquire" href="mailto:activities@bbbsci.org">
                         <i class="fa fa-comment-o"></i>Inquire
                     </a>
                 </div>
                 <div class="col-xs-3">
                     <a class="favorite">
                         <i class="fa fa-heart-o" data-bind="click: addToAgenda"></i>Favorite
+                    </a>
+                </div>
+                
+                <div class="col-xs-3">
+                    <a class="complete" data-bind="click: addToCalendar">
+                        <i class="fa fa-calendar"></i>Schedule
                     </a>
                 </div>
                 
@@ -89,7 +96,7 @@
                     </h4>
                 </div>
                 <div class="col-xs-4 p-0">
-                	<a class="btn btn-filter" style="display:block;float:right;" href="\\#views/filterActivities.html">Show Filters</a>
+                	<a class="btn btn-clear" style="display:block;float:right;" data-bind="click:showPastEvents, text:pastEventsText"></a>
                 </div>
             </div>
          </div>
@@ -106,11 +113,12 @@
     <ul data-role="listview" class="listView eventsListView passiveHide" data-bind="source: events" data-template="events-template">
     </ul>
     <script type="text/x-kendo-template" id="events-template">
-        <div title="#:indicatorDescription#" rel="tooltip" class="indicator">
+        <div class="indicator">
         	#: indicator #
+            <span class="tooltip">#:indicatorDescription#"</span>
         </div>
         <div class="meta">
-            <span class="cost">#= kendo.toString(new Date(date), 'MM/dd/yyyy') #</span>
+            <span class="cost">#= kendo.toString(new Date(dateString), 'MM/dd/yyyy') #</span>
             <span class="title" data-bind="click:loadActivity">#: name #</span>
             <span class="description">#: description #</span>
             <div class="rating">
@@ -132,14 +140,14 @@
                     </a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="complete" data-bind="click: addToAgenda">
+                    <a class="complete" data-bind="click: addToPlanner">
                         <i class="fa fa-calendar"></i>Add to Planner
                     </a>
                 </div>
                 
                 <div class="col-xs-3">
                 	# if (registrationLink != '' && registrationLink != null) { #
-                        <a target="_blank" href="#:registrationLink#" class="favorite">
+                        <a data-bind="click:goToRegisterPage" class="favorite">
                             <i class="fa fa-clipboard"></i>Register
                         </a>
                     # } #                    

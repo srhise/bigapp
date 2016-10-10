@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="lib/sweet-alert/sweet-alert.css">
 
     <!-- cordova script (this will be a 404 during development if served with `grunt serve`) -->
+    <script src="lib/fastclick/fastclick.js" type="application/javascript"></script>
     <script src="cordova.js"></script>
     <script src="lib/defiant/defiant.min.js"></script>
     <script src="lib/vue/vue.min.js"></script>
@@ -20,7 +21,9 @@
     <script src="bower_components/everlive/min/everlive.all.min.js"></script>
     <script src="lib/sweet-alert/sweet-alert.js"></script>
     <script src="lib/progress/progress.all.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="lib/ics/ics-deps.js"></script>
+    
     <script src="app.js"></script>
     <script src="scripts/utilities.js"></script>
     <script src="scripts/state.js"></script>
@@ -31,6 +34,7 @@
     <script src="scripts/profile.js"></script>
     <script src="scripts/updateInfo.js"></script>
     <script src="scripts/myPlanner.js"></script>
+    <script src="scripts/history.js"></script>
     <script src="dataProviders/bigAppBackend.js"></script>
 </head>
 
@@ -77,13 +81,13 @@
             <div data-role="navbar">
                 <div class="row header-nav">
                     <div class="col-xs-3">
-                        <a class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                        
                     </div>
                     <div class="col-xs-5">
                         <span data-role="view-title"></span>
                     </div>
                     <div class="col-xs-4" style="padding-right:5px;">
-                        <a class="navbtn"><i class="fa fa-heart-o"></i></a>
+                        <a href="#views/myPlanner.html" class="navbtn"><i class="fa fa-heart-o"></i></a>
                         <a href="#views/filterActivities.html" class="navbtn"><i class="fa fa-filter"></i></a>
                     </div>
                	</div>
@@ -113,18 +117,59 @@
         </footer>
     </div>
     
-    <div data-role="layout" data-id="planner-header">
+    <div data-role="layout" data-id="history-header">
         <header data-role="header">
             <div data-role="navbar">
                 <div class="row header-nav">
                     <div class="col-xs-3">
-                        <a class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                        <a data-role="backbutton" class="navbtn"><i class="fa fa-arrow-left"></i></a>
                     </div>
                     <div class="col-xs-5">
                         <span data-role="view-title"></span>
                     </div>
                     <div class="col-xs-4" style="padding-right:5px;">
-                        <a class="navbtn"><i class="fa fa-heart-o"></i></a>
+                        <a href="#views/myPlanner.html" class="navbtn"><i class="fa fa-heart-o"></i></a>
+                        <a href="#views/filterActivities.html" class="navbtn"><i class="fa fa-filter"></i></a>
+                    </div>
+               	</div>
+        	</div>
+            <div class="tabs container-fluid">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <a class="statsTab tab active">
+                            <i class="fa fa-bar-chart"></i>&nbsp;Stats
+                        </a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a class="historyTab tab">
+                            <i class="fa fa-bars"></i>&nbsp;Activity History
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- application views will be rendered here -->
+        <footer data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#views/myPlanner.html"><img width="30" src="img/agenda-icon.png"/>My Planner</a>
+                <a href="#views/activityList.html"><img  width="30" src="img/running-icon.png"/> Activity Finder</a>
+                <a href="#views/profile.html"><img  width="30" src="img/profile-icon.png"/> My Profile</a>
+            </div>
+        </footer>
+    </div>
+    
+    <div data-role="layout" data-id="planner-header">
+        <header data-role="header">
+            <div data-role="navbar">
+                <div class="row header-nav">
+                    <div class="col-xs-3">
+                        <a data-role="backbutton" class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                    </div>
+                    <div class="col-xs-5">
+                        <span data-role="view-title"></span>
+                    </div>
+                    <div class="col-xs-4" style="padding-right:5px;">
+                        <a href="#views/myPlanner.html" class="navbtn"><i class="fa fa-heart-o"></i></a>
                         <a href="#views/filterActivities.html" class="navbtn"><i class="fa fa-filter"></i></a>
                     </div>
                	</div>
@@ -159,13 +204,13 @@
             <div data-role="navbar">
                 <div class="row header-nav">
                     <div class="col-xs-3">
-                        <a href="#views/activityList.html" class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                        <a data-role="backbutton" class="navbtn"><i class="fa fa-arrow-left"></i></a>
                     </div>
                     <div class="col-xs-6">
                         <span data-role="view-title"></span>
                     </div>
                     <div class="col-xs-3" style="padding-right:5px;">
-                        <a class="navbtn" style="float:right;"><i class="fa fa-heart-o"></i></a>
+                        <a href="#views/myPlanner.html" class="navbtn" style="float:right;"><i class="fa fa-heart-o"></i></a>
                     </div>
                	</div>
         	</div>
@@ -191,7 +236,7 @@
                         <span data-role="view-title"></span>
                     </div>
                     <div class="icons-right">
-                        <a class="navbtn" style="float:right;"><i class="fa fa-line-chart"></i></a>
+                        <a href="#views/history.html" class="navbtn" style="float:right;"><i class="fa fa-line-chart"></i></a>
                     </div>
                	</div>
         	</div>
@@ -211,13 +256,13 @@
             <div data-role="navbar">
                 <div class="row header-nav">
                     <div class="col-xs-3">
-                        <a href="#views/activityList.html" class="navbtn"><i class="fa fa-arrow-left"></i></a>
+                        <a data-role="backbutton" class="navbtn"><i class="fa fa-arrow-left"></i></a>
                     </div>
                     <div class="col-xs-6 text-center">
                         <span data-role="view-title"></span>
                     </div>
                     <div class="col-xs-3 text-right">
-                        <a class="navbtn"><i class="fa fa-heart-o"></i></a>
+                        <a href="#views/myPlanner.html" class="navbtn"><i class="fa fa-heart-o"></i></a>
                     </div>
                	</div>
         	</div>
@@ -256,5 +301,4 @@
     <!-- START_CUSTOM_CODE_kendoUiMobileApp -->
     <!-- END_CUSTOM_CODE_kendoUiMobileApp -->
 </body>
-
 </html>

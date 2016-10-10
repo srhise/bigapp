@@ -1,5 +1,6 @@
 body {
     font-family: "Verdana", "sans-serif";
+    padding-top:15px;
 }
 
 d-block {
@@ -27,7 +28,7 @@ d-block {
 }
 .m-t-10 {
     margin-top:10px;
-}wee
+}
 
 .p-0 {
     padding:0px;
@@ -379,6 +380,11 @@ d-block {
 .panel-body img {
     max-width:100%;
     height:auto;
+}
+
+.panel-group a {
+    text-decoration:underline;
+    font-weight:bold;
 }
 
 a.btn-clear {
@@ -815,6 +821,7 @@ img.signin-bg {
     text-align:right;
     padding-right:15px;
     position:relative;
+    padding-top:10px;
 }
 
 .header-nav .col-xs-3 {
@@ -1183,7 +1190,11 @@ div.action-bar div.col-xs-3 {
     display:none;
 }
 
-#tooltip
+.indicator {
+    position:relative;
+}
+
+.listView li span.tooltip
 {
     text-align: center;
     color: #fff;
@@ -1191,23 +1202,27 @@ div.action-bar div.col-xs-3 {
     position: absolute;
     z-index: 100;
     padding: 15px;
+    display: none;
+    top: 40px;
+    width: 200px;
+    right: 0px;
 }
  
-#tooltip:after /* triangle decoration */
+.tooltip:after /* triangle decoration */
 {
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid #0088ce;
+    border-bottom: 10px solid #0088ce;
     content: '';
     position: absolute;
-    left: 50%;
-    bottom: -10px;
+    right: 40px;
+    top: -10px;
     margin-left: -10px;
 }
 
-#tooltip.top:after
+.tooltip.top:after
 {
     border-top-color: transparent;
     border-bottom: 10px solid #0088ce;
@@ -1215,13 +1230,13 @@ div.action-bar div.col-xs-3 {
     bottom: auto;
 }
 
-#tooltip.left:after
+.tooltip.left:after
 {
     left: 10px;
     margin: 0;
 }
 
-#tooltip.right:after
+.tooltip.right:after
 {
     right: 10px;
     left: auto;
@@ -1427,4 +1442,21 @@ h4 {
 
 .sweet-alert button.cancel {
     background-color: #C1C1C1 !important;
+}
+
+div.km-tabstrip a.km-state-active {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* History Page */
+
+.chart-header {
+    display:block;
+    text-align:center;
+    margin:10px 10px 0px 10px;
+    font-size:16px;
+}
+
+.feat-img img {
+    margin:0px auto;
 }

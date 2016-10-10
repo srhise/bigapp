@@ -42,8 +42,8 @@ app.home = kendo.observable({
         },
         homeModel = kendo.observable({
             displayName: '',
-            email: '',
-            password: '',
+            email: 'srhise@exactaindy.com',
+            password: '02tboyziU!',
             validateData: function(data) {
                 if (!data.email) {
                     swal({

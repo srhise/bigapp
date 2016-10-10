@@ -2,25 +2,27 @@
   "ProjectName": "The Big App Hybrid",
   "ProjectGuid": "637dc982-232d-453a-a986-834841a02f12",
   "projectVersion": 1,
-  "AppIdentifier": "com.telerik.TheBigAppHybrid",
-  "DisplayName": "The Big App Hybrid",
+  "AppIdentifier": "com.bbbsci.bigapp",
+  "DisplayName": "The BigApp",
   "Author": "",
-  "Description": "The Big App Hybrid",
-  "BundleVersion": "1.0",
-  "AndroidVersionCode": "1",
+  "Description": "The BigApp",
+  "BundleVersion": "1.2",
+  "AndroidVersionCode": "2",
   "iOSDeviceFamily": [
-    "1"
+    "1",
+    "2"
   ],
   "iOSBackgroundMode": [],
   "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
   "FrameworkVersion": "4.0.0",
   "AndroidPermissions": [
+    "android.permission.CAMERA",
     "android.permission.INTERNET"
   ],
   "DeviceOrientations": [
     "Portrait"
   ],
-  "AndroidHardwareAcceleration": "True",
+  "AndroidHardwareAcceleration": "true",
   "iOSStatusBarStyle": "Default",
   "Framework": "Cordova",
   "WP8TileTitle": "",
@@ -42,10 +44,11 @@
   ],
   "CorePlugins": [
     "cordova-plugin-camera",
+    "cordova-plugin-inappbrowser",
     "cordova-plugin-network-information",
     "cordova-plugin-whitelist",
     "de.appplant.cordova.plugin.local-notification@0.8.2",
-    "nl.x-services.plugins.calendar@4.4.4",
+    "nl.x-services.plugins.calendar@4.4.5",
     "nl.x-services.plugins.toast@2.2.1"
   ]
 }

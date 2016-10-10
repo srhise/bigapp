@@ -68,6 +68,7 @@ app.myPlanner = (function () {
                 handleRating();
             },
             removeActivity: function(e) {
+                console.log(e.dataItem);
                 swal({   
                     title: "Are you sure you want to remove this?",   
                     text: "Click ok to confirm.",   
@@ -103,12 +104,13 @@ app.myPlanner = (function () {
                         $.each(viewModel.events, function(index, value) {
                             if(typeof value != "undefined" && value.activityID == e.data.activityID) viewModel.events.splice(index,1);
                         });
+                    
+                    	// Contact Us Primary Button
                         swal({
                             title: "Deleted!",
-                            text: "Your activity was successfully removed.", 
+                            text: "Removing an item from your planner does not impact your registration status. Contact BBBSCI to unregister from this event.", 
                             type: "success",
-                            timer: 1500,   
-                            showConfirmButton: false
+                            showConfirmButton: true
                         }); 
                 });
             },
@@ -193,7 +195,7 @@ app.myPlanner = (function () {
                viewModel.set("rating", rating);
                $(this).css('color', '#444444');
                $(this).prevAll().css( "color", "#444444" );
-               x$(this).nextAll().css( "color", "#cccccc" );
+               $(this).nextAll().css( "color", "#cccccc" );
             });
         }
         

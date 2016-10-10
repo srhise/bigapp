@@ -44,7 +44,7 @@
         if (user) {
             initOptions = {
                 // you can change the default transition (slide, zoom or fade)
-                transition: 'slide',
+                transition: 'none',
                 // the application needs to know which view to load first
                 initial: 'views/activityList.html',
                 statusBarStyle: 'black-translucent'
@@ -70,7 +70,7 @@
         var apiErrorSubscription = app.events.subscribe('apierror', function(error) {
             swal({
                 title: "BigApp Error",
-                text: "We're currently having issues communicating with our backend servers. Thank you for your patience.",
+                text: "We were unable to process your request. Please try again.",
                 type: "error"
             });
         });
@@ -78,7 +78,11 @@
         // Initialize state module
         app.state.init();
         app.activityDetails.init();
-
+		$(function() {
+            if (typeof FastClick != 'undefined') {
+                //FastClick.attach(document.body);
+            }
+        });
     };
 
     if (window.cordova) {
@@ -89,19 +93,6 @@
             if (navigator && navigator.splashscreen) {
                 navigator.splashscreen.hide();
             }
-	
-            /*
-            var now             = new Date().getTime(),
-                _5_sec_from_now = new Date(now + 5*1000);
-
-            cordova.plugins.notification.local.schedule({
-                text: "Delayed Notification",
-                at: _5_sec_from_now,
-                led: "FF0000",
-                sound: null
-            });	
-            */
-            
             bootstrap();
         }, false);
     } else {

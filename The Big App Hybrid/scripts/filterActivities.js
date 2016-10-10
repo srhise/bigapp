@@ -93,6 +93,14 @@ app.filterActivities = (function () {
             });
             
             var indicatorsSubscription = app.events.subscribe('newIndicators', function(indicators) {
+                
+                $.each(indicators, function( index, value ) {
+                    if (typeof value != "undefined" && value.active === false) {
+                        indicators.splice(index, 1);
+                    }
+                });
+                
+                
                 $.each(indicators, function( index, value ) {
                     value.group = 'indicators'
                 	value.active = false;

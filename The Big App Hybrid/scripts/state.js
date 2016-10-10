@@ -33,6 +33,10 @@ app.state = (function () {
             app.events.publish('newEvents', events);
         }
         
+         var handlePastEvents = function(events) {
+            app.events.publish('newPastEvents', events);
+        }        
+        
         var handleActivity = function(activity) {
             app.events.publish('singleActivityLoaded', activity);
         }
@@ -99,6 +103,12 @@ app.state = (function () {
             app.events.publish('activityComplete', response);
         }
         
+        var handleUnauthorized = function() {
+            sessionStorage.removeItem('user');
+            app.state.model.set("user", null);
+            app.mobileApp.navigate('components/home/view.html');
+        }
+        
         return {
             model: model,
             init: init,
@@ -106,6 +116,7 @@ app.state = (function () {
             handleActivities: handleActivities,
             handleActivity: handleActivity,
             handleEvents: handleEvents,
+            handlePastEvents: handlePastEvents,
             handleCategories: handleCategories,
             handleIndicators: handleIndicators,
             handleIndicatorRequest: handleIndicatorRequest,
@@ -114,7 +125,8 @@ app.state = (function () {
             handleLogin: handleLogin,
             handleLogout: handleLogout,
             handleInvalidLogin: handleInvalidLogin,
-            handleComplete: handleComplete
+            handleComplete: handleComplete,
+            handleUnauthorized: handleUnauthorized
         };
     }());
     return module;

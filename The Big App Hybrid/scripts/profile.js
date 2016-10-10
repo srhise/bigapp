@@ -57,7 +57,13 @@ app.profile = (function () {
             
         }
     	var onBeforeShow = function() {
-           
+           app.mobileApp.pane.loader.show(); //show loading animation
+           app.middleWare.appUser(app.state.model.user.id, function(response) {
+               viewModel.set("photo", response.photoData);
+               viewModel.set("profile", response);
+          	   formatExternalLinks();
+               app.mobileApp.pane.loader.hide(); //show loading animation
+            });
         }
         
         var addFilter = function(e) {
@@ -69,7 +75,6 @@ app.profile = (function () {
             viewModel.set("matchSupportBusinessPhoneHref", 'tel:' + viewModel.profile.matchSupportBusinessPhone );
             viewModel.set("matchSupportCellPhoneHref", 'tel:' + viewModel.profile.matchSupportCellPhone );
             viewModel.set("matchSupportEmailHref", 'mailto:' + viewModel.profile.matchSupportEmail );
-            
             // Emergency Contact Phone & Email
         }
 

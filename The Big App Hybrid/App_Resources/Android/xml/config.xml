@@ -48,4 +48,36 @@
       <preference name="InAppBrowserStorageEnabled" value="true" />
       <preference name="disallowOverscroll" value="true" />
     -->
+    <!-- Urban Airship app credentials -->
+    <preference name="com.urbanairship.production_app_key" value="Your Production App Key" />
+    <preference name="com.urbanairship.production_app_secret" value="Your Production App Secret" />
+    <preference name="com.urbanairship.development_app_key" value="N1qs_5_VRf6oPM5Yme5vBg" />
+    <preference name="com.urbanairship.development_app_secret" value="1Aak0RW2RC2MuxyZ6PJcbA" />
+
+    <!-- Required for Android. -->
+    <preference name="com.urbanairship.gcm_sender" value="AIzaSyAw3_WnuExwM4-sJnNV2O_iVWiNrzE4B68" />
+
+    <!-- If the app is in production or not -->
+    <preference name="com.urbanairship.in_production" value="false" />
+
+    <!-- Optional config values -->
+
+    <!-- Enable push when the application launches -->
+    <preference name="com.urbanairship.enable_push_onlaunch" value="true" />
+
+    <!-- Enable Analytics when the application launches -->
+    <!-- Warning: Features that depend on analytics being enabled may not work properly if analytics is disabled (reports, location segmentation, region triggers, push to local time). -->
+    <preference name="com.urbanairship.enable_analytics" value="true" />
+
+    <!-- Override the Android notification icon -->
+    <preference name="com.urbanairship.notification_icon" value="ic_notification" />
+
+    <!-- Override the Android notification sound (sound file should be in res/raw)-->
+    <preference name="com.urbanairship.notification_sound" value="push" />
+
+    <!-- Specify the notification accent color for Android API 21+ (Lollipop) -->
+    <preference name="com.urbanairship.notification_accent_color" value="#0000ff" />
+
+    <!-- Clear the iOS badge on launch -->
+    <preference name="com.urbanairship.clear_badge_onlaunch" value="true" />
 </widget>

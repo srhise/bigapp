@@ -1,0 +1,126 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "urbanairship-cordova@6.2.0",
+        "scope": null,
+        "escapedName": "urbanairship-cordova",
+        "name": "urbanairship-cordova",
+        "rawSpec": "6.2.0",
+        "spec": "6.2.0",
+        "type": "version"
+      },
+      "/private/var/folders/vp/qjyzk7z10gz3d0cswbmwlrxr0000gn/T/pluginInstallation116917-12787-1da765z.4wrj6k1emi"
+    ]
+  ],
+  "_from": "urbanairship-cordova@6.2.0",
+  "_id": "urbanairship-cordova@6.2.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/urbanairship-cordova",
+  "_nodeVersion": "5.8.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/urbanairship-cordova-6.2.0.tgz_1475879949296_0.4016490725334734"
+  },
+  "_npmUser": {
+    "name": "hcrowell",
+    "email": "helen.crowell@urbanairship.com"
+  },
+  "_npmVersion": "3.7.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "urbanairship-cordova@6.2.0",
+    "scope": null,
+    "escapedName": "urbanairship-cordova",
+    "name": "urbanairship-cordova",
+    "rawSpec": "6.2.0",
+    "spec": "6.2.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/urbanairship-cordova/-/urbanairship-cordova-6.2.0.tgz",
+  "_shasum": "ce0439bda0f3309d700681e6fa7f09512e752f33",
+  "_shrinkwrap": null,
+  "_spec": "urbanairship-cordova@6.2.0",
+  "_where": "/private/var/folders/vp/qjyzk7z10gz3d0cswbmwlrxr0000gn/T/pluginInstallation116917-12787-1da765z.4wrj6k1emi",
+  "author": {
+    "name": "Urban Airship"
+  },
+  "bugs": {
+    "email": "support@urbanairship.com"
+  },
+  "cordova": {
+    "id": "urbanairship-cordova",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Urban Airship Cordova plugin",
+  "devDependencies": {
+    "jsdoc": "3.4.0",
+    "minami": "1.1.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "ce0439bda0f3309d700681e6fa7f09512e752f33",
+    "tarball": "https://registry.npmjs.org/urbanairship-cordova/-/urbanairship-cordova-6.2.0.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=4.1.0"
+    },
+    {
+      "name": "cordova-plugman",
+      "version": ">=4.2.0"
+    }
+  ],
+  "gitHead": "0f161cfa8f2bb0996348f98221ea1bbc5fac121c",
+  "homepage": "https://github.com/urbanairship/phonegap-ua-push#readme",
+  "keywords": [
+    "cordova",
+    "urbanairship",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "maintainers": [
+    {
+      "name": "dcrow",
+      "email": "david.crow@urbanairship.com"
+    },
+    {
+      "name": "hcrowell",
+      "email": "helen.crowell@urbanairship.com"
+    },
+    {
+      "name": "rlepinski",
+      "email": "ryan.lepinski@urbanairship.com"
+    },
+    {
+      "name": "ua",
+      "email": "web-team@urbanairship.com"
+    },
+    {
+      "name": "zbrown",
+      "email": "zach.brown@urbanairship.com"
+    }
+  ],
+  "name": "urbanairship-cordova",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urbanairship/phonegap-ua-push.git"
+  },
+  "scripts": {
+    "generate-docs": "jsdoc ./www/UrbanAirship.js -t ./node_modules/minami/ -r jsdoc_readme.md"
+  },
+  "version": "6.2.0"
+}

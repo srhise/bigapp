@@ -1,0 +1,23 @@
+Project "The Big App Hybrid.tmp.proj" (default targets):
+	Warning: Cannot include the following item(s) in your application: .bowerrc;.yo-rc.json;bower_components\everlive\.bower.json;bower_components\everlive\.gitattributes;bower_components\kendo-ui-appbuilder-core\.bower.json. The build system treats items with a leading dot as hidden files or directories and does not process them. If you want to include these items in your application package, rename them and rebuild your app.
+	android Build Tooling revision 2016.10.06.6r
+	Build Tooling Hostname ab-linuxbpc-2
+	Warning: npm
+	Warning: ERR! addLocal Could not install /home/builder/BpcTooling/Cordova3/Plugins/urbanairship-cordova
+	Warning: Failed to fetch plugin /home/builder/BpcTooling/Cordova3/Plugins/urbanairship-cordova via registry.
+Probably this is either a connection problem, or plugin spec is incorrect.
+Check your connection and plugin name/version/URL.
+Error: ENOENT: no such file or directory, open '/home/builder/BpcTooling/Cordova3/Plugins/urbanairship-cordova'
+	Warning: /home/builder/BpcTooling/Cordova3/node_modules/cordova-build-utils/bin/install-plugins-3.js:190
+							throw Error("exit code: " + code);
+							^
+
+Error: exit code: 1
+    at Error (native)
+    at ChildProcess.<anonymous> (/home/builder/BpcTooling/Cordova3/node_modules/cordova-build-utils/bin/install-plugins-3.js:190:14)
+    at emitTwo (events.js:87:13)
+    at ChildProcess.emit (events.js:172:7)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:200:12)
+	Error: Build failed during execution
+	Error: 'Build failed with error code 1'
+Done building project "The Big App Hybrid.tmp.proj" -- FAILED.

@@ -20,7 +20,8 @@ app.middleWare = (function () {
                }               
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -37,7 +38,8 @@ app.middleWare = (function () {
                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -54,7 +56,8 @@ app.middleWare = (function () {
                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -71,7 +74,7 @@ app.middleWare = (function () {
                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
                app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
@@ -89,7 +92,8 @@ app.middleWare = (function () {
                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -106,7 +110,8 @@ app.middleWare = (function () {
                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -123,7 +128,8 @@ app.middleWare = (function () {
                }
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -138,12 +144,12 @@ app.middleWare = (function () {
                app.state.handleLogin(response);                
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               alert(JSON.stringify(thrownError));
                app.mobileApp.pane.loader.hide(); //hide loading animation
                if (xhr.status == 401) {
                    app.state.handleInvalidLogin();
                } else {
-               	   app.state.handleAPIError();    
+               	   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation   
                }
             }
           
@@ -165,8 +171,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.mobileApp.pane.loader.hide(); //hide loading animation
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
              });
         }
@@ -181,7 +187,8 @@ app.middleWare = (function () {
             	console.log(response);
             },
             error: function(xhr, ajaxOptions, thrownError) {
-               app.state.handleAPIError();
+               app.state.handleAPIError(thrownError);
+               app.mobileApp.pane.loader.hide(); // hide loading animation
             }
          });
         }
@@ -194,7 +201,8 @@ app.middleWare = (function () {
                     callback(response);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
              });
         }
@@ -207,7 +215,8 @@ app.middleWare = (function () {
                     callback(response);
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -225,7 +234,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -243,7 +253,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -263,7 +274,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -282,7 +294,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                	app.state.handleAPIError();
+                	app.state.handleAPIError(thrownError);
+                    app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -302,7 +315,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -319,7 +333,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -336,7 +351,8 @@ app.middleWare = (function () {
                    }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }
@@ -353,7 +369,8 @@ app.middleWare = (function () {
                     }
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
-                   app.state.handleAPIError();
+                   app.state.handleAPIError(thrownError);
+                   app.mobileApp.pane.loader.hide(); // hide loading animation
                 }
            });
         }

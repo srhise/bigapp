@@ -36,58 +36,24 @@
       };
     })();
 
-    var handlePushNotifications() {
-        // Incoming message callback
-        var handleIncomingPush = function(event) {
-          if(event.message) {
-            console.log("Incoming push: " + event.message)
-          } else {
-            console.log("No incoming message")
-          }
-        }
-        // Registration callback
-        var onRegistration = function(event)  {
-          if (!event.error) {
-            alert("Reg Success: " + event.pushID)
-            $('#id').text(event.pushID)
-          } else {
-            console.log(event.error)
-          }
-        }
-        // Register for any urban airship events
-        document.addEventListener("urbanairship.registration", onRegistration, false)
-        document.addEventListener("urbanairship.push", handleIncomingPush, false)
+    window.onNotification = function(e) {
+        alert(e);
+    }
+
+    var successHandler = function (result) {
+        alert(result);
+    }
+
+    var errorHandler = function (result) {
+        alert(result);
+    }
+
+    var setupPushNotifications = function() {
         
-        // Handle resume
-        document.addEventListener("resume", function() {
-          console.log("Device resume!")
-          
-          PushNotification.resetBadge()
-          PushNotification.getIncoming(handleIncomingPush)
-          // Reregister for urbanairship events if they were removed in pause event
-          document.addEventListener("urbanairship.registration", onRegistration, false)
-          document.addEventListener("urbanairship.push", handleIncomingPush, false)
-        }, false)
-        // Handle pause
-        document.addEventListener("pause", function() {
-          console.log("Device pause!")
-         
-          // Remove urbanairship events.  Important on android to not receive push in the background.
-          document.removeEventListener("urbanairship.registration", onRegistration, false)
-          document.removeEventListener("urbanairship.push", handleIncomingPush, false)
-        }, false)
-        // Register for notification types
-        PushNotification.registerForNotificationTypes(PushNotification.notificationType.badge | 
-          PushNotification.notificationType.sound | 
-          PushNotification.notificationType.alert)
-        // Initiate the UI
-        
-        // Get any incoming push from device ready open
-        PushNotification.getIncoming(handleIncomingPush)
     }
 
     var bootstrap = function() {
-        
+    
         var initOptions;        
         var user = localStorage.getItem("user");
         user = JSON.parse(user);
@@ -113,9 +79,9 @@
             app.mobileApp = new kendo.mobile.Application(document.body, initOptions);
         });
         
-        window.onerror = function(msg) {
-            alert(msg);
-        };
+        // window.onerror = function(msg) {
+        //   alert(msg);
+        // };
         
         var apiErrorSubscription = app.events.subscribe('apierror', function(error) {
             swal({
@@ -124,10 +90,13 @@
                 type: "error"
             });
         });
-        
         // Initialize state module
         app.state.init();
         app.activityDetails.init();
+
+        
+
+
 		$(function() {
             if (typeof FastClick != 'undefined') {
                 //FastClick.attach(document.body);
@@ -143,6 +112,7 @@
             if (navigator && navigator.splashscreen) {
                 navigator.splashscreen.hide();
             }
+            document.addEventListener("urbanairship.registration", function(event) {alert(event)}, false)
             bootstrap();
         }, false);
     } else {

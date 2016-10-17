@@ -198,6 +198,11 @@ app.activityList = (function () {
                 }
             }).data('kendoReplyRating');
             
+            if (viewModel.activities.length === 0) {
+                app.middleWare.getActivities();
+                app.middleWare.getEvents();
+                app.middleWare.getPastEvents();
+            }
         }
         var afterShow = function () {
             if (viewModel.hasFilters) {
@@ -212,7 +217,6 @@ app.activityList = (function () {
             
         }
         var filterActivities = function() {
-            return;
 			var searchString = '//*';
             var newItems = [];
             if (viewModel.filters.ages.length > 0) {

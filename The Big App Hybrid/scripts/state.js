@@ -22,6 +22,11 @@ app.state = (function () {
         }
         
         var handleAPIError = function(error) {
+            if (error === 'Unauthorized') {
+                localStorage.removeItem('user');
+                app.state.model.set("user", null);
+                app.mobileApp.navigate('components/home/view.html');
+            }
             app.events.publish('apierror', error);
         }
         
@@ -104,7 +109,7 @@ app.state = (function () {
         }
         
         var handleUnauthorized = function() {
-            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
             app.state.model.set("user", null);
             app.mobileApp.navigate('components/home/view.html');
         }

@@ -49,8 +49,8 @@
       <preference name="disallowOverscroll" value="true" />
     -->
     <!-- Urban Airship app credentials -->
-    <preference name="com.urbanairship.production_app_key" value="Your Production App Key" />
-    <preference name="com.urbanairship.production_app_secret" value="Your Production App Secret" />
+    <preference name="com.urbanairship.production_app_key" value="uYXLQ_DpTnWNG2ZG4mthSg" />
+    <preference name="com.urbanairship.production_app_secret" value="TFWdmzlYTmO3VyHVqVnPTg" />
     <preference name="com.urbanairship.development_app_key" value="N1qs_5_VRf6oPM5Yme5vBg" />
     <preference name="com.urbanairship.development_app_secret" value="1Aak0RW2RC2MuxyZ6PJcbA" />
 
@@ -78,6 +78,4 @@
     <!-- Specify the notification accent color for Android API 21+ (Lollipop) -->
     <preference name="com.urbanairship.notification_accent_color" value="#0000ff" />
 
-    <!-- Clear the iOS badge on launch -->
-    <preference name="com.urbanairship.clear_badge_onlaunch" value="true" />
 </widget>

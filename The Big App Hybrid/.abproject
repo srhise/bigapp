@@ -50,6 +50,7 @@
     "cordova-plugin-network-information",
     "cordova-plugin-whitelist",
     "nl.x-services.plugins.calendar@4.4.5",
-    "nl.x-services.plugins.toast@2.2.1"
+    "nl.x-services.plugins.toast@2.2.1",
+    "urbanairship-cordova"
   ]
 }

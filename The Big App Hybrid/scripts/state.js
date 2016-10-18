@@ -91,6 +91,7 @@ app.state = (function () {
         var handleLogin = function(user) {
             localStorage.setItem("user", JSON.stringify(user));
             app.state.model.set("user", user);
+            UAirship.setNamedUser(user.email);
             app.mobileApp.navigate('views/activityList.html');
         }
         

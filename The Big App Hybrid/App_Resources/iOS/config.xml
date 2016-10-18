@@ -58,14 +58,11 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage"/>
     </feature>
-     <!-- Urban Airship app credentials -->
-    <preference name="com.urbanairship.production_app_key" value="Your Production App Key" />
-    <preference name="com.urbanairship.production_app_secret" value="Your Production App Secret" />
+    <!-- Urban Airship app credentials -->
+    <preference name="com.urbanairship.production_app_key" value="uYXLQ_DpTnWNG2ZG4mthSg" />
+    <preference name="com.urbanairship.production_app_secret" value="TFWdmzlYTmO3VyHVqVnPTg" />
     <preference name="com.urbanairship.development_app_key" value="N1qs_5_VRf6oPM5Yme5vBg" />
     <preference name="com.urbanairship.development_app_secret" value="1Aak0RW2RC2MuxyZ6PJcbA" />
-
-    <!-- Required for Android. -->
-    <preference name="com.urbanairship.gcm_sender" value="AIzaSyAw3_WnuExwM4-sJnNV2O_iVWiNrzE4B68" />
 
     <!-- If the app is in production or not -->
     <preference name="com.urbanairship.in_production" value="false" />
@@ -80,5 +77,5 @@
     <preference name="com.urbanairship.enable_analytics" value="true" />
 
     <!-- Clear the iOS badge on launch -->
-    <preference name="com.urbanairship.clear_badge_onlaunch" value="true" />
+    <preference name="com.urbanairship.clear_badge_onlaunch" value="true | false" />
 </widget>

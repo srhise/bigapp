@@ -49,7 +49,25 @@
     }
 
     var setupPushNotifications = function() {
-        
+        // Register for any Urban Airship events
+        UAirship.setUserNotificationsEnabled(true, function(success) {
+            alert(success);
+        }, function(failure) {
+            alert(failure);
+        });
+        document.addEventListener("urbanairship.registration", function (event) {
+            console.log(event);
+            if (event.error) {
+                console.log('There was an error registering for push notifications')
+            } else {
+                console.log("Registered with ID: " + event.channelID)
+            }
+        })
+
+        // Register for any Urban Airship push events
+        document.addEventListener("urbanairship.push", function (event) {
+            alert("Incoming push: " + event.message)
+        })
     }
 
     var bootstrap = function() {
@@ -94,9 +112,6 @@
         app.state.init();
         app.activityDetails.init();
 
-        
-
-
 		$(function() {
             if (typeof FastClick != 'undefined') {
                 //FastClick.attach(document.body);
@@ -112,7 +127,7 @@
             if (navigator && navigator.splashscreen) {
                 navigator.splashscreen.hide();
             }
-            document.addEventListener("urbanairship.registration", function(event) {alert(event)}, false)
+            setupPushNotifications();
             bootstrap();
         }, false);
     } else {

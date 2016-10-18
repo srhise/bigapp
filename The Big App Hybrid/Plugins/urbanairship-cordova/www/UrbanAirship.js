@@ -130,7 +130,7 @@ document.addEventListener("deviceready", function() {
     callNative(function(e) {
       console.log("Firing document event: " + e.eventType)
       cordova.fireDocumentEvent(e.eventType, e.eventData)
-    }, null, "registerListener")
+    }, function(error) {console.log(error);}, "registerListener")
 }, false)
 
 /**

@@ -28,7 +28,7 @@
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-        
+
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="com.urbanairship.autopilot" android:value="com.urbanairship.cordova.CordovaAutopilot" />
 
@@ -46,7 +46,7 @@
 
             <activity android:name="com.urbanairship.messagecenter.MessageActivity" android:theme="@android:style/Theme.DeviceDefault.Light"/>
             <activity android:name="com.urbanairship.messagecenter.MessageCenterActivity" android:theme="@android:style/Theme.DeviceDefault.Light"/>
-
+           
             <activity
                 xmlns:tools="http://schemas.android.com/tools"
                 tools:node="replace"

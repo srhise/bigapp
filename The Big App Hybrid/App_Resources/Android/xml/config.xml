@@ -55,7 +55,7 @@
     <preference name="com.urbanairship.development_app_secret" value="1Aak0RW2RC2MuxyZ6PJcbA" />
 
     <!-- Required for Android. -->
-    <preference name="com.urbanairship.gcm_sender" value="AIzaSyAw3_WnuExwM4-sJnNV2O_iVWiNrzE4B68" />
+    <preference name="com.urbanairship.gcm_sender" value="983925806612" />
 
     <!-- If the app is in production or not -->
     <preference name="com.urbanairship.in_production" value="false" />
